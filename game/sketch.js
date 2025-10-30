@@ -1,16 +1,23 @@
 function setup() {
   createCanvas(800, 400);
+  menu = new Menu();
+  in_menu = true;
   // level setup
   loadLevel(0);
   currentLevel = 0;
+  
 }
 
 function draw() {
-  background(255);
-  // updates the player and collisions
-  player.update();
-  // shows the level
-  level.show();
+  if (in_menu == true) {
+    menu.menu();
+  } else {
+    background(255);
+    // updates the player and collisions
+    player.update();
+    // shows the level
+    level.show();
+  }
 }
 
 function loadLevel(n) {
@@ -63,11 +70,14 @@ function loadLevel(n) {
   }
 }
 
-//Jumping
+//Jumping and button to menu
 function keyPressed(UP_ARROW) {
   if ((key == "ArrowUp" || key == "w") && player.ground) {
     player.leap();
   }
   player.ground = false;
+  if (key == "p") {
+    in_menu = !in_menu;
+  }
   return false; //prevents scrolling via arrow key
 }
