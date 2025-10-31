@@ -6,7 +6,8 @@ class Button {
     h,
     clicked = function () {
       if (mouseIsPressed && this.cursorDetect()) console.log("hi");
-    }
+    },
+    shape = rect(100, 100, 20, 20)
   ) {
     this.x = x;
     this.y = y;
@@ -15,6 +16,7 @@ class Button {
     this.x2 = x + w;
     this.y2 = y + h;
     this.clicked = clicked;
+    this.shape = shape;
   }
   cursorDetect() {
     return (
@@ -26,7 +28,9 @@ class Button {
   }
   show() {
     push();
-    rect(this.x, this.y, this.w, this.h);
+    for (let p of this.shape) {
+      p;
+    }
     pop();
   }
 }
