@@ -1,15 +1,16 @@
 function setup() {
   createCanvas(800, 400);
   menu = new Menu();
-  in_menu = true;
+  inMenu = true;
   // level setup
   loadLevel(0);
   currentLevel = 0;
-  
+  unlockedLevels = new Set([0]);
+  menuID = 0;
 }
 
 function draw() {
-  if (in_menu == true) {
+  if (inMenu == true) {
     menu.menu();
   } else {
     background(255);
@@ -77,7 +78,7 @@ function keyPressed(UP_ARROW) {
   }
   player.ground = false;
   if (key == "p") {
-    in_menu = !in_menu;
+    inMenu = !inMenu;
   }
   return false; //prevents scrolling via arrow key
 }

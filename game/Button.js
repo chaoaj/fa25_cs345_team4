@@ -1,23 +1,25 @@
 class Button {
-  constructor(
-    x,
-    y,
-    w,
-    h,
+  constructor(x, y, w, h,
     clicked = function () {
       if (mouseIsPressed && this.cursorDetect()) console.log("hi");
     },
-    shape = rect(100, 100, 20, 20)
+    shape = function () {
+      rect(100, 100, 20, 20);
+    }
   ) {
+    // dimension variables
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
+    // hitbox helper variables
     this.x2 = x + w;
     this.y2 = y + h;
+    // function variables
     this.clicked = clicked;
     this.shape = shape;
   }
+  // detects if cursor is in the defined hitbox
   cursorDetect() {
     return (
       this.x <= mouseX &&
@@ -26,11 +28,8 @@ class Button {
       mouseY <= this.y2
     );
   }
+  // shows button via running whatever is put in the shape function
   show() {
-    push();
-    for (let p of this.shape) {
-      p;
-    }
-    pop();
+    this.shape();
   }
 }
