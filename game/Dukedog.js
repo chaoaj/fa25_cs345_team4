@@ -7,13 +7,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 400);
   // frameWidth = sprite width / 4
   dukeDog = new DukeDog(50, 200, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
 }
 
 function draw() {
-  background(255);
   dukeDog.update();
   dukeDog.display();
 }
