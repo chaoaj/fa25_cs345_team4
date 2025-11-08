@@ -1,5 +1,14 @@
+let dukeSprite;
+let dukeDog;
+
+function preload() {
+  dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
+}
+
+
 function setup() {
   createCanvas(800, 400);
+  dukeDog = new DukeDog(50, 200, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
   inMenu = true;
   // level setup
@@ -7,6 +16,7 @@ function setup() {
   currentLevel = 0;
   unlockedLevels = new Set([0]);
   menuID = 0;
+
 }
 
 function draw() {
@@ -18,6 +28,9 @@ function draw() {
     player.update();
     // shows the level
     level.show();
+
+    dukeDog.update();
+    dukeDog.display();
   }
 }
 

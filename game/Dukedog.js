@@ -1,20 +1,3 @@
-let dukeDog;
-let dukeSprite;
-
-function preload() {
-  // Load the sprite sheet
-  dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
-}
-
-function setup() {
-  // frameWidth = sprite width / 4
-  dukeDog = new DukeDog(50, 200, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
-}
-
-function draw() {
-  dukeDog.update();
-  dukeDog.display();
-}
 
 class DukeDog {
   constructor(x, y, frameWidth, frameHeight, numFrames, spriteSheet) {
