@@ -1,8 +1,19 @@
 let dukeSprite;
 let dukeDog;
+let heart3;
+let heart2;
+let heart1;
+let heart0;
+let healthBar;
 
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
+
+  heart3 = loadImage("assets/sprint3/fullHearts.png");
+  heart2 = loadImage("assets/sprint3/2Hearts.png");
+  heart1 = loadImage("assets/sprint3/1Heart.png");
+  heart0 = loadImage("assets/sprint3/NoHearts.png");
+  healthBar = loadImage("assets/sprint3/health-bar.png");
 }
 
 
@@ -16,6 +27,8 @@ function setup() {
   currentLevel = 0;
   unlockedLevels = new Set([0]);
   menuID = 0;
+
+  healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
 
 }
 
