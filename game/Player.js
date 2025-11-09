@@ -28,9 +28,18 @@
   }
   // gravity, movement and calls collision.
   update() {
-    push();
-    rect(this.x, this.y, this.w, this.h);
-    pop();
+    let frameWidth = this.sprite.width / this.frameCount;
+    let sx = floor(this.frameIndex / this.frameSpeed) * frameWidth;
+    let sy = 0;
+
+    // draw sprite instead of rect
+    image(this.sprite, this.x, this.y, this.w, this.h, sx, sy, frameWidth, this.sprite.height);
+
+    if (this.vx !== 0) {
+      this.frameIndex = (this.frameIndex + 1) % (this.frameCount * this.frameSpeed);
+    } else {
+      this.frameIndex = 0;
+    }
     // Goal handler
     for (let p of this.level.goals) {
       if(p.touch(this)) {
