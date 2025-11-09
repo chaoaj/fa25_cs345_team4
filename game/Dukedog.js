@@ -7,31 +7,57 @@ class DukeDog {
     this.frameHeight = frameHeight;
     this.numFrames = numFrames;
     this.spriteSheet = spriteSheet;
+
     this.currentFrame = 0;
     this.frameCounter = 0;
-    this.frameSpeed = 6; // Lower = faster
-    this.speedX = 2; // Movement speed
+    this.frameSpeed = 6; // animation speed
+
+    this.speed = 1.5; // follow speed
   }
 
   update() {
-    // Move horizontally
-    this.x += this.speedX;
+    // --- FOLLOW PLAYER ---
+    if (player) {
+      if (player.x > this.x) {
+        this.x += this.speed;
+      } else if (player.x < this.x) {
+        this.x -= this.speed;
+      }
 
-    // Bounce off walls
-    if (this.x > width - this.frameWidth || this.x < 0) {
-      this.speedX *= -1;
+      if (player.y > this.y) {
+        this.y += this.speed;
+      } else if (player.y < this.y) {
+        this.y -= this.speed;
+      }
     }
 
-    // Animate
+    // --- ANIMATION ---
     this.frameCounter++;
     if (this.frameCounter >= this.frameSpeed) {
       this.currentFrame = (this.currentFrame + 1) % this.numFrames;
       this.frameCounter = 0;
     }
+
+    // --- INTERACTION / COLLISION with PLAYER ---
+    if (this.touch(player)) {
+      healthSystem.dogDamage();
+      // Push dog back slightly so it doesn't hit every frame
+      this.x -= (player.x - this.x) * 0.2;
+      this.y -= (player.y - this.y) * 0.2;
+    }
+  }
+
+  // collision check
+  touch(p) {
+    return !(
+      this.x + this.frameWidth < p.x ||
+      this.x > p.x + p.w ||
+      this.y + this.frameHeight < p.y ||
+      this.y > p.y + p.h
+    );
   }
 
   display() {
-    // Draw one frame from the sprite sheet
     image(
       this.spriteSheet,
       this.x,
