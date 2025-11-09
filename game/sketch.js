@@ -24,6 +24,8 @@ function preload() {
   bg1.resize(800, 400);
   bg2.resize(800, 400);
   bg3.resize(800, 400);
+
+  playerSprite = loadImage("assets/player-sprite.png");
 }
 
 
