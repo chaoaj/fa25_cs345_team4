@@ -47,7 +47,7 @@ class HealthSystem {
             frame = 4;
         }
 
-        Image(this.healthBar, 20, 70, this.healthFrameWidth, this.healthFrameHeight, frame * this.healthFrameWidth, 0, this.healthFrameWidth, this.healthFrameHeight);
+        image(this.healthBar, 20, 70, this.healthFrameWidth, this.healthFrameHeight, frame * this.healthFrameWidth, 0, this.healthFrameWidth, this.healthFrameHeight);
     }
 
     starshipDamage() {

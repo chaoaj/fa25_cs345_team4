@@ -6,6 +6,8 @@ let heart1;
 let heart0;
 let healthBar;
 
+let bg1, bg2, bg3;
+
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
 
@@ -14,6 +16,14 @@ function preload() {
   heart1 = loadImage("assets/sprint3/1Heart.png");
   heart0 = loadImage("assets/sprint3/NoHearts.png");
   healthBar = loadImage("assets/sprint3/health-bar.png");
+
+  bg1 = loadImage("assets/background3.png");
+  bg2 = loadImage("assets/background2.png");
+  bg3 = loadImage("assets/background1fixed.png");
+
+  bg1.resize(800, 400);
+  bg2.resize(800, 400);
+  bg3.resize(800, 400);
 }
 
 
@@ -36,7 +46,15 @@ function draw() {
   if (inMenu == true) {
     menu.menu();
   } else {
+
     background(255);
+    if (currentLevel == 0) {
+      image(bg1, 0, 0, width, height);
+    } else if (currentLevel == 1) {
+      image(bg2, 0, 0, width, height);
+    } else if (currentLevel == 2) {
+      image(bg3, 0, 0, width, height);
+    }
     // updates the player and collisions
     player.update();
     // shows the level
@@ -44,10 +62,15 @@ function draw() {
 
     dukeDog.update();
     dukeDog.display();
+    healthSystem.display();
   }
+
+
 }
 
 function loadLevel(n) {
+
+  currentLevel = n;
   // level 1
   if (n == 0) {
     level = new Level();
