@@ -14,28 +14,11 @@ let inMenu = true;
 let initializedMenu = false
 let currentLevel = 0;
 let unlockedLevels = new Set([0]);
-let platform1, platform2;
-
-let player;
-let level;
-let playerSprite;
-let healthSystem;
-
-function restartGame() {
-  healthSystem.currHearts = healthSystem.maxHearts;
-  healthSystem.curHealth = healthSystem.maxHealth;
-  healthSystem.dogDamageCooldown = 0;
-  healthSystem.invincible = false;
-  healthSystem.invinciblityTimer = 0;
-
-  loadLevel(currentLevel);
-  dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
-  inMenu = false;
-  menuID = 0;
-}
 
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
+  
+  starshipSprite = loadImage("assets/sprint2/starship.jpg");
 
   heart3 = loadImage("assets/sprint3/fullHearts.png");
   heart2 = loadImage("assets/sprint3/2Hearts.png");
@@ -62,9 +45,7 @@ function setup() {
   loadLevel(currentLevel);
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
-  gameOverMenu = new GameOverMenu();
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
-
 
 
 }
@@ -86,8 +67,6 @@ function draw() {
       image(bg2, 0, 0, width, height);
     } else if (currentLevel == 2) {
       image(bg3, 0, 0, width, height);
-    } else {
-      background(255);
     }
     // updates the player and collisions
     player.update();
@@ -96,7 +75,6 @@ function draw() {
 
     dukeDog.update();
     dukeDog.display();
-    healthSystem.update();
     healthSystem.display();
   }
 
@@ -117,10 +95,11 @@ function loadLevel(n) {
     // level 2
     level = new Level();
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
+    level.addPlatform(new Platform(0, 370, 800, 30));
     level.addPlatform(new Platform(0, 370, 800, 30, null));
     level.addPlatform(new Platform(120, 320, 80, 20, platform2));
     // Very scuffed implentation of the starship for now.
-    level.addPlatform(new Platform(200, 320, 60, 60, function(){fill(100); this.x = 200 +  + Math.sin(frameCount/20)*30; rect(this.x, this.y, this.w, this.h);  image(starshipSprite, this.x, this.y, this.w, this.h, 113, 82, 120, 129);}));
+    level.addPlatform(new Platform(200, 320, 60, 60, null, function(){push(); fill(100); this.x = 200 +  + Math.sin(frameCount/20)*30; rect(this.x, this.y, this.w, this.h);  image(starshipSprite, this.x, this.y, this.w, this.h, 113, 82, 120, 129); pop();}));
     level.addPlatform(new Platform(280, 270, 100, 20, platform1));
     level.addPlatform(new Platform(480, 300, 80, 20, platform2));
     level.addPlatform(new Platform(630, 250, 120, 20, platform1));
