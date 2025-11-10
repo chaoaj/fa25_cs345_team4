@@ -13,9 +13,13 @@ class DukeDog {
     this.frameSpeed = 6; // animation speed
 
     this.speed = 1.5; // follow speed
+    this.verticalSpeed = 1;
   }
 
   update() {
+    if (!player) {
+      return;
+    }
     // --- FOLLOW PLAYER ---
     if (player) {
       if (player.x > this.x) {
@@ -24,10 +28,9 @@ class DukeDog {
         this.x -= this.speed;
       }
 
-      if (player.y > this.y) {
-        this.y += this.speed;
-      } else if (player.y < this.y) {
-        this.y -= this.speed;
+      let dy = player.y - this.y;
+      if (Math.abs(dy) > 5) {
+        this.y += dy * 0.05;
       }
     }
 
@@ -43,7 +46,7 @@ class DukeDog {
       healthSystem.dogDamage();
       // Push dog back slightly so it doesn't hit every frame
       this.x -= (player.x - this.x) * 0.2;
-      this.y -= (player.y - this.y) * 0.2;
+
     }
   }
 

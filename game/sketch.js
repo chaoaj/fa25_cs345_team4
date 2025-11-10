@@ -38,11 +38,11 @@ function preload() {
 
 function setup() {
   createCanvas(800, 400);
-  dukeDog = new DukeDog(50, 200, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
+  loadLevel(currentLevel);
+  dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
   gameOverMenu = new GameOverMenu();
   // level setup
-  loadLevel(currentLevel);
 
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
 
