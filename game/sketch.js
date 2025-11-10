@@ -93,6 +93,8 @@ function loadLevel(n) {
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
     level.addPlatform(new Platform(0, 370, 800, 30));
     level.addPlatform(new Platform(120, 320, 80, 20));
+    // Very scuffed implementation of the starship for now.
+    level.addPlatform(new Platform(200, 320, 60, 60, function(){fill(100); this.x = 200 +  + Math.sin(frameCount/20)*30; rect(this.x, this.y, this.w, this.h);  image(starshipSprite, this.x, this.y, this.w, this.h, 113, 82, 120, 129);}));
     level.addPlatform(new Platform(280, 270, 100, 20));
     level.addPlatform(new Platform(480, 300, 80, 20));
     level.addPlatform(new Platform(630, 250, 120, 20));
