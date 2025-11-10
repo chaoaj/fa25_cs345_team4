@@ -5,24 +5,23 @@
   <title>Game Over Screen</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
   <script src="GameOverMenu.js"></script>
-  <script src="Menu.js"></script> <!-- ✅ Load your main menu class -->
+  <script src="Menu.js"></script> 
   <script>
     let menu;
     let gameOverMenu;
-    let menuID = 2;       // Start on Game Over screen
+    let menuID = 2;
     let inMenu = true;
     let currentLevel = 0;
     let unlockedLevels = new Set([0, 1, 2]);
 
     function loadLevel(level) {
       console.log("Loading level:", level);
-      // Add your level setup logic here
     }
 
     function setup() {
       createCanvas(800, 600);
-      menu = new Menu();             // ✅ Instantiate main menu
-      gameOverMenu = new GameOverMenu(); // ✅ Instantiate Game Over menu
+      menu = new Menu();       
+      gameOverMenu = new GameOverMenu();
     }
 
     function draw() {
@@ -31,9 +30,9 @@
 
       if (inMenu) {
         if (menuID === 2) {
-          gameOverMenu.menu(); // ✅ Show Game Over screen
+          gameOverMenu.menu(); 
         } else {
-          menu.menu();         // ✅ Show main menu or level select
+          menu.menu();
         }
       }
     }
@@ -64,4 +63,5 @@
   </script>
 </head>
 <body></body>
+
 </html>
