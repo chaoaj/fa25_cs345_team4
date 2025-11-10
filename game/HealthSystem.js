@@ -31,6 +31,7 @@ class HealthSystem {
         }
     }
         if (this.currHearts <= 0) {
+            this.restart();
             menuID = 2;
             inMenu = true;
         }
