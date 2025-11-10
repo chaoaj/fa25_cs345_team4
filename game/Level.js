@@ -36,7 +36,7 @@ class Level {
       // vertical collision logic
       if (x1 - player.w <= player.x && player.x <= x2) {
         if (player.vy < 0) {
-          if (player.y + player.vy <= y2 + player.h / 2 && player.y > y1) {
+          if (player.y + player.vy <= y2 && player.y > y1) {
             player.vy = 0;
             player.y = y2 + this.padding;
           }

@@ -49,6 +49,7 @@
     for (let p of this.level.goals) {
       if(p.touch(this)) {
         currentLevel += 1;
+        unlockedLevels.add(currentLevel);
         loadLevel(currentLevel);
       }
     }
