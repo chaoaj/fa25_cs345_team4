@@ -1,5 +1,6 @@
 class Button {
   constructor(x, y, w, h,
+    // just an example function for click detection
     clicked = function () {
       if (mouseIsPressed && this.cursorDetect()) console.log("hi");
     },
