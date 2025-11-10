@@ -5,6 +5,8 @@ let heart2;
 let heart1;
 let heart0;
 let healthBar;
+let gameOverMenu;
+let menuID;
 
 let bg1, bg2, bg3;
 
@@ -45,20 +47,43 @@ function setup() {
   loadLevel(currentLevel);
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
+<<<<<<< HEAD
+=======
+  inMenu = true;
+  gameOverMenu = new GameOverMenu();
+  // level setup
+  loadLevel(0);
+  currentLevel = 0;
+  unlockedLevels = new Set([0]);
+  menuID = 0;
+
+>>>>>>> 76eace8 (Add invincibility power-up, tophat duck, and Game Over updates)
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
 
 
 }
 
 function draw() {
+<<<<<<< HEAD
   if (inMenu) {
     if (menuID == 2) {
+=======
+  background(50);
+  cursor(ARROW);
+
+  if (inMenu == true) {
+    if (menuID === 2) {
+>>>>>>> 76eace8 (Add invincibility power-up, tophat duck, and Game Over updates)
       gameOverMenu.menu();
     } else {
       menu.menu();
     }
+<<<<<<< HEAD
     return;
   }
+=======
+  } else {
+>>>>>>> 76eace8 (Add invincibility power-up, tophat duck, and Game Over updates)
 
     background(255);
     if (currentLevel == 0) {
@@ -76,6 +101,12 @@ function draw() {
     dukeDog.update();
     dukeDog.display();
     healthSystem.display();
+
+    if (healthSystem.isDead()) {
+      inMenu = true;
+      menuID = 2;
+    }
+
   }
 
 
@@ -145,3 +176,5 @@ function keyPressed(UP_ARROW) {
   }
   return false; //prevents scrolling via arrow key
 }
+
+
