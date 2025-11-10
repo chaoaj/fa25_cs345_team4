@@ -32,6 +32,8 @@
     this.frameSpeed = 6;
 
     this.nextLevel = null;
+    this.invincible = false;
+    this.invinciblityTimer = 0;
   }
   // gravity, movement and calls collision.
   update() {

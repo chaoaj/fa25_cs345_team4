@@ -150,8 +150,8 @@ class Menu {
       if (!initializedMenu) {
         this.buttons = [];
 
-        buttonY = 200;
-        spacing = 220;
+        let buttonY = 200;
+        let spacing = 220;
 
         // PLAY AGAIN button (left)
         this.buttons.push(new Button(200, buttonY, 200, 100,

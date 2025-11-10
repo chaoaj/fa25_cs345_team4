@@ -50,7 +50,7 @@ class SunglassDuck {
 
         if (touching) {
             player.speed += 2;
-            player.moveLimit += 3;
+            player.movelimit += 3;
 
             this.alive = false;
         }
