@@ -142,14 +142,14 @@ function loadLevel(n) {
     level.addPlatform(new Platform(0, 370, 800, 30));
     level.addPlatform(new Platform(0, 370, 800, 30, null));
     level.addPlatform(new Platform(120, 320, 80, 20, platform2));
-    // Very scuffed implentation of the starship for now.
-    level.addPlatform(new Platform(200, 320, 60, 60, null, function(){push(); fill(100); this.x = 200 +  + Math.sin(frameCount/20)*30; rect(this.x, this.y, this.w, this.h);  image(starshipSprite, this.x, this.y, this.w, this.h, 113, 82, 120, 129); pop();}));
+    level.addPlatform(new Starship(200, 320, 60, 60, starshipSprite, shape = 1, 200, 300));
     level.addPlatform(new Platform(280, 270, 100, 20, platform1));
     level.addPlatform(new Platform(480, 300, 80, 20, platform2));
     tophatDuck = new TophatDuck(630, 150, 60, 108, 2, topHatDuckSprite);
     level.addPlatform(new Platform(630, 250, 120, 20, platform1));
     level.addPlatform(new Platform(400, 180, 80, 20, platform2));
     level.addGoal(new Goal(740, 140, 40, 40));
+    console.log(level.platforms);
   } else if (n == 2) {
     // level 3
     level = new Level();
