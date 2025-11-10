@@ -90,8 +90,10 @@
     let sx = floor(this.frameIndex / this.frameSpeed) * frameWidth;
     image(this.sprite, this.x, this.y, this.w, this.h, sx, 0, frameWidth, this.sprite.height);
 
-    if (this.vx !== 0) {
-      this.frameIndex = (this.frameIndex + 1) % (this.frameCount * this.frameSpeed);
+    if (!this.ground) {
+      this.frameIndex = 3 * this.frameSpeed;
+    } else if (this.vx !== 0) {
+      this.frameIndex = (this.frameIndex + 1) % (3 * this.frameSpeed);
     } else {
       this.frameIndex = 0;
     }
