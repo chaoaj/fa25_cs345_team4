@@ -14,6 +14,27 @@ let inMenu = true;
 let initializedMenu = false
 let currentLevel = 0;
 let unlockedLevels = new Set([0]);
+let platform1, platform2;
+
+let player;
+let level;
+let playerSprite;
+let gameOverMenu;
+let healthSystem;
+
+function restartGame() {
+  healthSystem.currHearts = healthSystem.maxHearts;
+  healthSystem.curHealth = healthSystem.maxHealth;
+  healthSystem.dogDamageCooldown = 0;
+  healthSystem.invincible = false;
+  healthSystem.invinciblityTimer = 0;
+
+  loadLevel(currentLevel);
+  dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
+  inMenu = false;
+  menuID = 0;
+  gameOverMenu.reset();
+}
 
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
@@ -33,6 +54,8 @@ function preload() {
   bg3.resize(800, 400);
 
   playerSprite = loadImage("assets/player-sprite.png");
+  platform1 = loadImage("assets/platforms.png");
+  platform2 = loadImage("assets/platforms2.png");
 }
 
 
@@ -41,7 +64,9 @@ function setup() {
   loadLevel(currentLevel);
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
+  gameOverMenu = new GameOverMenu();
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
+
 
 
 }
@@ -63,6 +88,8 @@ function draw() {
       image(bg2, 0, 0, width, height);
     } else if (currentLevel == 2) {
       image(bg3, 0, 0, width, height);
+    } else {
+      background(255);
     }
     // updates the player and collisions
     player.update();
@@ -71,6 +98,7 @@ function draw() {
 
     dukeDog.update();
     dukeDog.display();
+    healthSystem.update();
     healthSystem.display();
   }
 
@@ -82,36 +110,36 @@ function loadLevel(n) {
   if (n == 0) {
     level = new Level();
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
-    level.addPlatform(new Platform(0, 370, 800, 30));
-    level.addPlatform(new Platform(150, 300, 100, 20));
-    level.addPlatform(new Platform(300, 250, 120, 20));
-    level.addPlatform(new Platform(480, 200, 100, 20));
+    level.addPlatform(new Platform(0, 370, 800, 30, null));
+    level.addPlatform(new Platform(150, 300, 100, 20, platform2));
+    level.addPlatform(new Platform(300, 250, 120, 20, platform1));
+    level.addPlatform(new Platform(480, 200, 100, 20, platform2));
     level.addGoal(new Goal(320, 210, 30, 40));
   } else if (n == 1) {
     // level 2
     level = new Level();
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
-    level.addPlatform(new Platform(0, 370, 800, 30));
-    level.addPlatform(new Platform(120, 320, 80, 20));
-    level.addPlatform(new Platform(280, 270, 100, 20));
-    level.addPlatform(new Platform(480, 300, 80, 20));
-    level.addPlatform(new Platform(630, 250, 120, 20));
-    level.addPlatform(new Platform(400, 180, 80, 20));
+    level.addPlatform(new Platform(0, 370, 800, 30, null));
+    level.addPlatform(new Platform(120, 320, 80, 20, platform2));
+    level.addPlatform(new Platform(280, 270, 100, 20, platform1));
+    level.addPlatform(new Platform(480, 300, 80, 20, platform2));
+    level.addPlatform(new Platform(630, 250, 120, 20, platform1));
+    level.addPlatform(new Platform(400, 180, 80, 20, platform2));
     level.addGoal(new Goal(740, 140, 40, 40));
   } else if (n == 2) {
     // level 3
     level = new Level();
     player = new Player(level, 30, 330, 30, 40, 1, 2, 10, -16, 20);
-    level.addPlatform(new Platform(0, 370, 150, 30));
-    level.addPlatform(new Platform(180, 320, 100, 20));
-    level.addPlatform(new Platform(320, 270, 100, 20));
-    level.addPlatform(new Platform(460, 220, 100, 20));
-    level.addPlatform(new Platform(360, 170, 100, 20));
-    level.addPlatform(new Platform(220, 120, 100, 20));
-    level.addPlatform(new Platform(80, 80, 100, 20));
-    level.addPlatform(new Platform(260, 50, 100, 20));
-    level.addPlatform(new Platform(440, 80, 100, 20));
-    level.addPlatform(new Platform(600, 100, 100, 20));
+    level.addPlatform(new Platform(0, 370, 150, 30, null));
+    level.addPlatform(new Platform(180, 320, 100, 20, platform2));
+    level.addPlatform(new Platform(320, 270, 100, 20, platform1));
+    level.addPlatform(new Platform(460, 220, 100, 20, platform2));
+    level.addPlatform(new Platform(360, 170, 100, 20, platform1));
+    level.addPlatform(new Platform(220, 120, 100, 20, platform2));
+    level.addPlatform(new Platform(80, 80, 100, 20, platform1));
+    level.addPlatform(new Platform(260, 50, 100, 20, platform2));
+    level.addPlatform(new Platform(440, 80, 100, 20, platform1));
+    level.addPlatform(new Platform(600, 100, 100, 20, platform2));
     level.addGoal(new Goal(730, 60, 40, 40));
   } else {
     // game end

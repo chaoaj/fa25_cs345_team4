@@ -22,12 +22,8 @@ class GameOverMenu {
       this.buttons.push(new Button(200, buttonY, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
-            currentLevel = 0;
-            loadLevel(currentLevel);
-            inMenu = false;
-            menuID = 0;
+            restartGame();
             gameOverMenu.reset();
-            clear();
           }
         },
         function () {
@@ -49,7 +45,6 @@ class GameOverMenu {
             menuID = 0;
             inMenu = true;
             gameOverMenu.reset();
-            clear();
           }
         },
         function () {
