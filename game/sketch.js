@@ -14,10 +14,12 @@ let inMenu = true;
 let initializedMenu = false
 let currentLevel = 0;
 let unlockedLevels = new Set([0]);
+let sunglassesDuck;
+let sunglassesDuckSprite;
 
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
-  
+
   starshipSprite = loadImage("assets/sprint2/starship.jpg");
 
   heart3 = loadImage("assets/sprint3/fullHearts.png");
@@ -37,6 +39,7 @@ function preload() {
   playerSprite = loadImage("assets/player-sprite.png");
   platform1 = loadImage("assets/platforms.png");
   platform2 = loadImage("assets/platforms2.png");
+  sunglassesDuckSprite = loadImage("assets/sprint2/sunglassesDuck.png");
 }
 
 
@@ -64,8 +67,13 @@ function draw() {
     }
     // updates the player and collisions
     player.update();
-    // shows the level
+
     level.show();
+    if (sunglassesDuck) {
+      sunglassesDuck.update();
+      sunglassesDuck.display();
+      sunglassesDuck.checkCollision(player);
+    }
 
     dukeDog.update();
     dukeDog.display();
@@ -86,6 +94,7 @@ function loadLevel(n) {
   if (n == 0) {
     level = new Level();
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
+    sunglassesDuck = new SunglassDuck(400, 150, 197, 325, 3, sunglassesDuckSprite);
     level.addPlatform(new Platform(0, 370, 800, 30, null));
     level.addPlatform(new Platform(150, 300, 100, 20, platform2));
     level.addPlatform(new Platform(300, 250, 120, 20, platform1));
@@ -145,5 +154,3 @@ function keyPressed(UP_ARROW) {
   }
   return false; //prevents scrolling via arrow key
 }
-
-
