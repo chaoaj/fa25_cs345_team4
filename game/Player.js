@@ -32,8 +32,6 @@
     this.frameSpeed = 6;
 
     this.nextLevel = null;
-    this.invincible = false;
-    this.invinciblityTimer = 0;
   }
   // gravity, movement and calls collision.
   update() {
@@ -87,10 +85,6 @@
       this.vx += 1;
     }
     this.x += this.vx;
-  }
-  activateInvincibility(ms) {
-    this.invincible = true;
-    this.invinciblityTimer = ms / (1000 /60);
   }
   // jumping function
   leap() {

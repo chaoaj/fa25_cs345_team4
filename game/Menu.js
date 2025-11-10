@@ -139,7 +139,7 @@ class Menu {
       initializedMenu = true;
     }
     }
-    // Game over menu 
+    // Game over menu
     if (menuID == 2) {
       background(0);
       textSize(48);
@@ -162,7 +162,7 @@ class Menu {
             inMenu = false;
             menuID = 0;
             initializedMenu = false;
-            clear();
+
           }
         },
         function () {
@@ -183,7 +183,7 @@ class Menu {
           if (mouseIsPressed && this.cursorDetect()) {
             menuID = 0;
             initializedMenu = false;
-            clear();
+            inMenu = true;
           }
         },
         function () {

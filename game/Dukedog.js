@@ -45,7 +45,9 @@ class DukeDog {
     if (this.touch(player)) {
       healthSystem.dogDamage();
       // Push dog back slightly so it doesn't hit every frame
-      this.x -= (player.x - this.x) * 0.2;
+      if (healthSystem.dogDamageCooldown <= 0 && !player.invincible) {
+        healthSystem.dogDamage();
+      }
 
     }
   }

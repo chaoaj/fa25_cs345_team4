@@ -105,11 +105,13 @@ function draw() {
 
     dukeDog.update();
     dukeDog.display();
+    healthSystem.update();
     healthSystem.display();
 
     if (healthSystem.isDead()) {
       inMenu = true;
       menuID = 2;
+      initializedMenu = false;
     }
   }
 }
