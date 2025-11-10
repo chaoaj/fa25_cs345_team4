@@ -30,9 +30,19 @@
     this.frameCount = 4;
     this.frameIndex = 0;
     this.frameSpeed = 6;
+
+    this.nextLevel = null;
+    this.invincible = false;
+    this.invinciblityTimer = 0;
   }
   // gravity, movement and calls collision.
   update() {
+    if (this.invincible) {
+      this.invinciblityTimer--;
+      if (this.invinciblityTimer <= 0) {
+        this.invincible = false;
+      }
+    }
     let frameWidth = this.sprite.width / this.frameCount;
     let sx = floor(this.frameIndex / this.frameSpeed) * frameWidth;
     let sy = 0;
@@ -48,9 +58,7 @@
     // Goal handler
     for (let p of this.level.goals) {
       if(p.touch(this)) {
-        currentLevel += 1;
-        unlockedLevels.add(currentLevel);
-        loadLevel(currentLevel);
+        this.nextLevel = currentLevel + 1;
       }
     }
     // Gravity implenetation
@@ -79,6 +87,10 @@
       this.vx += 1;
     }
     this.x += this.vx;
+  }
+  activateInvincibility(ms) {
+    this.invincible = true;
+    this.invinciblityTimer = ms / (1000 /60);
   }
   // jumping function
   leap() {

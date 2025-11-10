@@ -1,6 +1,5 @@
 class HealthSystem {
 
-
     constructor(healthBar, heart3, heart2, heart1, heart0 ) {
         this.maxHearts = 3;
         this.currHearts = 3;
@@ -80,6 +79,9 @@ class HealthSystem {
     }
 
     starshipDamage() {
+        if (player.invincible) {
+            return;
+        }
         this.currHealth -= 25;
         if (this.currHealth <= 0) {
             this.currHearts -= 1;
@@ -93,6 +95,9 @@ class HealthSystem {
     }
 
     dogDamage() {
+        if (player.invincible || this.dogDamageCooldown > 0) {
+            return;
+        }
         if (this.dogDamageCooldown <= 0) {
             this.currHearts -= 1;
             this.currHealth = this.maxHealth;

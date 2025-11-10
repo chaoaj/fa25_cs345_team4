@@ -16,6 +16,7 @@ let currentLevel = 0;
 let unlockedLevels = new Set([0]);
 let sunglassesDuck;
 let sunglassesDuckSprite;
+let tophatDuck;
 
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
@@ -40,6 +41,7 @@ function preload() {
   platform1 = loadImage("assets/platforms.png");
   platform2 = loadImage("assets/platforms2.png");
   sunglassesDuckSprite = loadImage("assets/sprint2/sunglassesDuck.png");
+  topHatDuckSprite = loadImage("assets/sprint2/duckTopHat-sprite.png");
 }
 
 
@@ -68,11 +70,37 @@ function draw() {
     // updates the player and collisions
     player.update();
 
+    if (player.nextLevel !== null) {
+      if (player.nextLevel <= 2) {
+        currentLevel = player.nextLevel;
+        unlockedLevels.add(currentLevel);
+        loadLevel(currentLevel);
+        player.nextLevel = null;
+        return;
+      } else {
+        clear();
+        textAlign(CENTER, CENTER);
+        textSize(32);
+        fill(0);
+        text("You Finished All Levels!", width/2, height/2);
+        noLoop();
+        return;
+      }
+    }
+
     level.show();
     if (sunglassesDuck) {
-      sunglassesDuck.update();
-      sunglassesDuck.display();
-      sunglassesDuck.checkCollision(player);
+      for (let duck of sunglassesDuck) {
+        duck.update();
+        duck.display();
+        duck.checkCollision(player);
+      }
+    }
+
+    if (tophatDuck) {
+      tophatDuck.update();
+      tophatDuck.display();
+      tophatDuck.checkCollision(player);
     }
 
     dukeDog.update();
@@ -89,18 +117,23 @@ function draw() {
 
 function loadLevel(n) {
 
-  currentLevel = n;
+  sunglassesDuck = [];
+  tophatDuck = null;
+  level = new Level();
   // level 1
   if (n == 0) {
-    level = new Level();
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
-    sunglassesDuck = new SunglassDuck(400, 150, 197, 325, 3, sunglassesDuckSprite);
+
+    let duck1 = new SunglassDuck(170, 200, 60, 100, 3, sunglassesDuckSprite);
+    let duck2 = new SunglassDuck(500, 100, 60, 100, 3, sunglassesDuckSprite);
+    sunglassesDuck = [duck1, duck2];
     level.addPlatform(new Platform(0, 370, 800, 30, null));
     level.addPlatform(new Platform(150, 300, 100, 20, platform2));
     level.addPlatform(new Platform(300, 250, 120, 20, platform1));
     level.addPlatform(new Platform(480, 200, 100, 20, platform2));
     level.addGoal(new Goal(320, 210, 30, 40));
   } else if (n == 1) {
+    sunglassesDuck = [];
     // level 2
     level = new Level();
     player = new Player(level, 50, 300, 30, 40, 1, 2, 10, -16, 20);
@@ -111,6 +144,7 @@ function loadLevel(n) {
     level.addPlatform(new Platform(200, 320, 60, 60, null, function(){push(); fill(100); this.x = 200 +  + Math.sin(frameCount/20)*30; rect(this.x, this.y, this.w, this.h);  image(starshipSprite, this.x, this.y, this.w, this.h, 113, 82, 120, 129); pop();}));
     level.addPlatform(new Platform(280, 270, 100, 20, platform1));
     level.addPlatform(new Platform(480, 300, 80, 20, platform2));
+    tophatDuck = new TophatDuck(630, 150, 60, 108, 2, topHatDuckSprite);
     level.addPlatform(new Platform(630, 250, 120, 20, platform1));
     level.addPlatform(new Platform(400, 180, 80, 20, platform2));
     level.addGoal(new Goal(740, 140, 40, 40));

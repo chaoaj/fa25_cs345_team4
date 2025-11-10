@@ -1,10 +1,12 @@
 class SunglassDuck {
-    constructor(x, y, frameWidth, frameHeight, numFrames, spriteSheet) {
+    constructor(x, y, displayWidth, displayHeight, numFrames, spriteSheet) {
         this.x = x;
         this.y = y;
         this.baseY = y;
-        this.frameHeight = frameHeight;
-        this.frameWidth = frameWidth;
+        this.displayHeight = displayHeight;
+        this.displayWidth = displayWidth;
+        this.frameWidth = spriteSheet.width / numFrames;
+        this.frameHeight = spriteSheet.height;
         this.numFrames = numFrames;
         this.spriteSheet = spriteSheet;
 
@@ -29,7 +31,7 @@ class SunglassDuck {
             return;
         }
 
-        image(this.spriteSheet, this.x, this.y, this.frameWidth, this.frameHeight,
+        image(this.spriteSheet, this.x, this.y, this.displayWidth, this.displayHeight,
             this.currentFrame * this.frameWidth, 0, this.frameWidth, this.frameHeight
         );
 
@@ -41,9 +43,9 @@ class SunglassDuck {
         }
 
         let touching =
-            player.x < this.x + this.frameWidth &&
+            player.x < this.x + this.displayWidth &&
             player.x + player.w > this.x &&
-            player.y < this.y + this.frameHeight &&
+            player.y < this.y + this.displayHeight &&
             player.y + player.h > this.y;
 
         if (touching) {
