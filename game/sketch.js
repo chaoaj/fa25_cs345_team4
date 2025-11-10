@@ -8,6 +8,13 @@ let healthBar;
 
 let bg1, bg2, bg3;
 
+let menu;
+let gameOverMenu;
+let menuID = 0;
+let inMenu = true;
+let currentLevel = 0;
+let unlockedLevels = new Set([0]);
+
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
 
@@ -33,21 +40,24 @@ function setup() {
   createCanvas(800, 400);
   dukeDog = new DukeDog(50, 200, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
-  inMenu = true;
+  gameOverMenu = new GameOverMenu();
   // level setup
-  loadLevel(0);
-  currentLevel = 0;
-  unlockedLevels = new Set([0]);
-  menuID = 0;
+  loadLevel(currentLevel);
 
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
+
 
 }
 
 function draw() {
-  if (inMenu == true) {
-    menu.menu();
-  } else {
+  if (inMenu) {
+    if (menuID == 2) {
+      gameOverMenu.menu();
+    } else {
+      menu.menu();
+    }
+    return;
+  }
 
     background(255);
     if (currentLevel == 0) {
@@ -67,8 +77,6 @@ function draw() {
     healthSystem.display();
   }
 
-
-}
 
 function loadLevel(n) {
 

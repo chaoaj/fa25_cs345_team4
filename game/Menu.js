@@ -9,8 +9,13 @@ class Menu {
         new Button(300, 150, 200, 100,
           // defines what happens when the button is clicked
           function () {
-            if (mouseIsPressed && this.cursorDetect()) inMenu = false;
-          },
+            if (mouseIsPressed && this.cursorDetect()) {
+              currentLevel = 0;
+              loadLevel(currentLevel);
+              inMenu = false;
+              clear();
+          }
+        },
           // defines what drawing elements are used in a button
           function () {
             push();

@@ -5,10 +5,10 @@ class GameOverMenu {
   }
 
   menu() {
-    background(0);   
+    background(0);
     textSize(48);
     textAlign(CENTER);
-    fill(255, 0, 0);     
+    fill(255, 0, 0);
     text("GAME OVER", width / 2, 80);
 
     // Initialize buttons only once
@@ -22,12 +22,12 @@ class GameOverMenu {
       this.buttons.push(new Button(200, buttonY, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
-            currentLevel = 0;        
-            loadLevel(currentLevel); 
-            inMenu = false;          
-            menuID = 0;                 
-            gameOverMenu.reset();       
-            clear();  
+            currentLevel = 0;
+            loadLevel(currentLevel);
+            inMenu = false;
+            menuID = 0;
+            gameOverMenu.reset();
+            clear();
           }
         },
         function () {
@@ -46,10 +46,10 @@ class GameOverMenu {
       this.buttons.push(new Button(200 + spacing, buttonY, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
-            menuID = 0;            
+            menuID = 0;
             inMenu = true;
-            gameOverMenu.reset();  
-            clear();     
+            gameOverMenu.reset();
+            clear();
           }
         },
         function () {
@@ -76,19 +76,5 @@ class GameOverMenu {
 
   reset() {
     this.initialized = false;
-  }
-}
-
-
-function draw() {
-  background(50);
-  cursor(ARROW);
-
-  if (inMenu) {
-    if (menuID === 2) {
-      gameOverMenu.menu(); 
-    } else {
-      menu.menu();
-    }
   }
 }
