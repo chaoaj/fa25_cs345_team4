@@ -30,6 +30,10 @@ class HealthSystem {
             this.invincible = false;
         }
     }
+
+        if (this.dogDamageCooldown > 0) {
+            this.dogDamageCooldown--;
+        }
         if (this.currHearts <= 0) {
             this.restart();
             menuID = 2;
@@ -91,9 +95,8 @@ class HealthSystem {
     dogDamage() {
         if (this.dogDamageCooldown <= 0) {
             this.currHearts -= 1;
+            this.currHealth = this.maxHealth;
             this.dogDamageCooldown = 60;
-            this.invincible = true;
-            this.invinciblityTimer = 60;
         }
     }
 
