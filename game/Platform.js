@@ -6,7 +6,7 @@ class Platform {
     this.h = h;
     // default constructor if shape not specified
     if (shape == 1) {
-      this.shape = function(){fill(20); rect(this.x, this.y, this.w, this.h);}
+      this.shape = function(){fill(100); rect(this.x, this.y, this.w, this.h);}
     } else {
       this.shape = shape;
     }

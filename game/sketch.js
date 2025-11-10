@@ -9,9 +9,9 @@ let healthBar;
 let bg1, bg2, bg3;
 
 let menu;
-let gameOverMenu;
 let menuID = 0;
 let inMenu = true;
+let initializedMenu = false
 let currentLevel = 0;
 let unlockedLevels = new Set([0]);
 
@@ -41,9 +41,6 @@ function setup() {
   loadLevel(currentLevel);
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
-  gameOverMenu = new GameOverMenu();
-  // level setup
-
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
 
 

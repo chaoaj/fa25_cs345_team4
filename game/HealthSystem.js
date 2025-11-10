@@ -82,7 +82,8 @@ class HealthSystem {
         }
 
         if (this.isDead()) {
-            this.restart();
+            menuID = 2;
+            inMenu = true;
         }
     }
 
