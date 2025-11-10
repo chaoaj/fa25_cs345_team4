@@ -5,7 +5,6 @@ let heart2;
 let heart1;
 let heart0;
 let healthBar;
-let gameOverMenu;
 
 let bg1, bg2, bg3;
 
