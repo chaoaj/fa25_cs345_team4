@@ -19,7 +19,6 @@ let platform1, platform2;
 let player;
 let level;
 let playerSprite;
-let gameOverMenu;
 let healthSystem;
 
 function restartGame() {
@@ -33,7 +32,6 @@ function restartGame() {
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   inMenu = false;
   menuID = 0;
-  gameOverMenu.reset();
 }
 
 function preload() {
