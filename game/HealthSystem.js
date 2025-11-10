@@ -34,7 +34,8 @@ class HealthSystem {
         if (this.dogDamageCooldown > 0) {
             this.dogDamageCooldown--;
         }
-        if (this.currHearts <= 0 && menuID !== 2) {
+        if (this.currHearts <= 0) {
+            this.restart();
             menuID = 2;
             inMenu = true;
         }
