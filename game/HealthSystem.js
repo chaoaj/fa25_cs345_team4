@@ -1,5 +1,6 @@
 class HealthSystem {
 
+
     constructor(healthBar, heart3, heart2, heart1, heart0 ) {
         this.maxHearts = 3;
         this.currHearts = 3;
@@ -16,7 +17,25 @@ class HealthSystem {
         this.healthFrameWidth = this.healthBar.width / this.healthFrames;
         this.healthFrameHeight = this.healthBar.height;
 
+        this.invincible = false;
+        this.invinciblityTimer = 0;
+        this.dogDamageCooldown = 0;
+
     }
+
+    update() {
+        if (this.invincible) {
+            this.invinciblityTimer--;
+            if (this.invinciblityTimer <= 0) {
+            this.invincible = false;
+        }
+    }
+        if (this.currHearts <= 0) {
+            menuID = 2;
+            inMenu = true;
+        }
+    }
+
 
     display() {
         let img;
@@ -30,7 +49,12 @@ class HealthSystem {
             img = this.heart0;
         }
 
-        image(img, 20, 20);
+        let heartX = 20;
+        let heartY = 20
+        image(img, heartX, heartY);
+
+        let healthX = heartX + img.width + 10;
+        let healthY = heartY + (img.height / 2 - this.healthFrameHeight / 2);
 
         let status = this.currHealth / this.maxHealth;
         let frame;
@@ -47,7 +71,7 @@ class HealthSystem {
             frame = 4;
         }
 
-        image(this.healthBar, 20, 70, this.healthFrameWidth, this.healthFrameHeight, frame * this.healthFrameWidth, 0, this.healthFrameWidth, this.healthFrameHeight);
+        image(this.healthBar, healthX, healthY, this.healthFrameWidth, this.healthFrameHeight, frame * this.healthFrameWidth, 0, this.healthFrameWidth, this.healthFrameHeight);
     }
 
     starshipDamage() {
@@ -63,7 +87,12 @@ class HealthSystem {
     }
 
     dogDamage() {
-        this.currHearts -= 1;
+        if (this.dogDamageCooldown <= 0) {
+            this.currHearts -= 1;
+            this.dogDamageCooldown = 60;
+            this.invincible = true;
+            this.invinciblityTimer = 60;
+        }
     }
 
     isDead() {
