@@ -11,6 +11,9 @@ class Platform {
         push();
         if(img != null) {
           image(this.img, this.x, this.y, this.w, this.h);
+        } else {
+          fill(100);
+          rect(this.x, this.y, this.w, this.h);
         }
         pop();
       }
