@@ -136,8 +136,12 @@ class Menu {
           text(3, 275, 135);
         }
       ));
+      textAlign(CENTER, CENTER);
+      textSize(32);
+      fill(0);
       initializedMenu = true;
-    }
+      }
+      text("Have to get to a level to unlock the level select button for it.", width/2, height/2, 400);
     }
     // Game over menu
     if (menuID == 2) {
