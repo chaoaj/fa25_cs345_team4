@@ -9,8 +9,6 @@ class Platform {
     if (shape == 1) {
       this.shape = function(){
         push();
-        fill(100);
-        rect(this.x, this.y, this.w, this.h);
         if(img != null) {
           image(this.img, this.x, this.y, this.w, this.h);
         }

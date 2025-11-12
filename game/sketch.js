@@ -57,8 +57,21 @@ function setup() {
 
 function draw() {
   if (inMenu) {
+    clear();
     menu.menu();
   } else {
+    pause = new Button(700, 100, 40, 40,
+      function () {
+        if (mouseIsPressed && this.cursorDetect()) {
+          inMenu = !inMenu;
+          clear();
+        }
+      },
+      function () {
+        rect(700, 100, 40, 40);
+      }
+    );
+        
     background(255);
     if (currentLevel == 0) {
       image(bg1, 0, 0, width, height);
@@ -67,6 +80,8 @@ function draw() {
     } else if (currentLevel == 2) {
       image(bg3, 0, 0, width, height);
     }
+    pause.show();
+    pause.clicked();
     // updates the player and collisions
     player.update();
 
