@@ -115,15 +115,8 @@ class HealthSystem {
         loadLevel(currentLevel);
     }
 
-    activateInvincibility(ms) {
-        let seconds;
-        if (ms > 1000) {
-            seconds = Math.ceil(ms / 1000);
-        } else {
-            seconds = ms;
-        }
-
-        this.invincible = true;
-        this.invinciblityTimer = Math.ceil(seconds * 60);
+    activateHearts() {
+        this.currHearts = 3;
+        this.currHealth = 100;
     }
  }

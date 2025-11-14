@@ -46,7 +46,7 @@ function preload() {
 
 
 function setup() {
-  createCanvas(800, 400);
+  createCanvas(1200, 800);
   loadLevel(currentLevel);
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();

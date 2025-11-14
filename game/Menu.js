@@ -182,8 +182,10 @@ class Menu {
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             menuID = 0;
-            initializedMenu = false;
+            clear();
             inMenu = true;
+            initializedMenu = false;
+            
           }
         },
         function () {
