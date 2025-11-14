@@ -136,8 +136,12 @@ class Menu {
           text(3, 275, 135);
         }
       ));
+      textAlign(CENTER, CENTER);
+      textSize(32);
+      fill(0);
       initializedMenu = true;
-    }
+      }
+      text("Have to get to a level to unlock the level select button for it.", width/2, height/2, 400);
     }
     // Game over menu
     if (menuID == 2) {
@@ -181,11 +185,10 @@ class Menu {
       this.buttons.push(new Button(200 + spacing, buttonY, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
-            menuID = 0;
-            clear();
             inMenu = true;
+            menuID = 0;
             initializedMenu = false;
-            
+            clear();
           }
         },
         function () {
