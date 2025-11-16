@@ -21,12 +21,6 @@ class Level {
       p.show();
   }
   collision(player) {
-    // canvas floor logic
-    if (player.y + player.vy >= 400 - player.h) {
-      player.y = 400 - player.h;
-      player.vy = 0;
-      player.ground = true;
-    }
     // x and y coords, then width and height adding to top left corner of a rect to get other corners
     for (let p of this.platforms) {
       let x1 = p.x;

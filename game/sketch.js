@@ -141,46 +141,46 @@ function loadLevel(n) {
   level = new Level();
   // level 1
   if (n == 0) {
-    player = new Player(level, 50 * PLAYER_SCALE, 300 * PLAYER_SCALE, 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
+    player = new Player(level, 50 * PLAYER_SCALE, 370 * PLAYER_SCALE - 40 * PLAYER_SCALE, 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
+    let duckHeight = 100 * DUCK_SCALE;
 
-    let duck1 = new SunglassDuck(170, 200, 60 * DUCK_SCALE, 100 * DUCK_SCALE, 3, sunglassesDuckSprite);
-    let duck2 = new SunglassDuck(500, 100, 60 * DUCK_SCALE, 100 * DUCK_SCALE, 3, sunglassesDuckSprite);
+    let duck1 = new SunglassDuck(260, (320 * DUCK_SCALE) - duckHeight + 50, 60 * DUCK_SCALE, duckHeight, 3, sunglassesDuckSprite);
+    let duck2 = new SunglassDuck(500, (270 * DUCK_SCALE) - duckHeight + 50, 60 * DUCK_SCALE, duckHeight, 3, sunglassesDuckSprite);
     sunglassesDuck = [duck1, duck2];
-    level.addPlatform(new Platform(0, 370, 800, 30, null));
-    level.addPlatform(new Platform(150, 300, 100, 20, platform2));
-    level.addPlatform(new Platform(300, 250, 120, 20, platform1));
-    level.addPlatform(new Platform(480, 200, 100, 20, platform2));
-    level.addGoal(new Goal(320, 210, 30, 40));
+    level.addPlatform(new Platform(0, 370 * PLAYER_SCALE, 1200 * PLAYER_SCALE, 30 * PLAYER_SCALE, null));
+    level.addPlatform(new Platform(250, 320 * PLAYER_SCALE, 150, 20, platform2));
+    level.addPlatform(new Platform(500, 270 * PLAYER_SCALE, 150, 20, platform1));
+    level.addPlatform(new Platform(800, 220 * PLAYER_SCALE, 120, 20, platform2));
+    level.addGoal(new Goal(900, 200 * PLAYER_SCALE - 40, 40, 40));
   } else if (n == 1) {
     sunglassesDuck = [];
     // level 2
     level = new Level();
-    player = new Player(level, 50 * PLAYER_SCALE, 300 * PLAYER_SCALE, 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
-    level.addPlatform(new Platform(0, 370, 800, 30));
-    level.addPlatform(new Platform(0, 370, 800, 30, null));
-    level.addPlatform(new Platform(120, 320, 80, 20, platform2));
-    level.addPlatform(new Starship(200, 320, 60 * STARSHIP_SCALE, 60 * STARSHIP_SCALE, starshipSprite, shape = 1, 200, 300));
-    level.addPlatform(new Platform(280, 270, 100, 20, platform1));
-    level.addPlatform(new Platform(480, 300, 80, 20, platform2));
-    tophatDuck = new TophatDuck(630, 150, 60 * DUCK_SCALE, 108 * DUCK_SCALE, 2, topHatDuckSprite);
-    level.addPlatform(new Platform(630, 250, 120, 20, platform1));
-    level.addPlatform(new Platform(400, 180, 80, 20, platform2));
-    level.addGoal(new Goal(740, 140, 40, 40));
+    player = new Player(level, 50 * PLAYER_SCALE, (370 * PLAYER_SCALE) - (40 * PLAYER_SCALE), 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
+    level.addPlatform(new Platform(0, 370 * PLAYER_SCALE, 800, 30, null));
+    level.addPlatform(new Platform(120, 320 * PLAYER_SCALE, 80, 20, platform2));
+    level.addPlatform(new Starship(200, 320 * PLAYER_SCALE, 60 * STARSHIP_SCALE, 60 * STARSHIP_SCALE, starshipSprite, shape = 1, 200, 300));
+    level.addPlatform(new Platform(280, 270 * PLAYER_SCALE, 100, 20, platform1));
+    level.addPlatform(new Platform(480, 300 * PLAYER_SCALE, 80, 20, platform2));
+    tophatDuck = new TophatDuck(630, (250 * PLAYER_SCALE) - (108 * DUCK_SCALE) + 5, 60 * DUCK_SCALE, 108 * DUCK_SCALE, 2, topHatDuckSprite);
+    level.addPlatform(new Platform(630, 250 * PLAYER_SCALE, 120, 20, platform1));
+    level.addPlatform(new Platform(400, 180 * PLAYER_SCALE, 80, 20, platform2));
+    level.addGoal(new Goal(740, (180 * PLAYER_SCALE) - 40, 40, 40));
     console.log(level.platforms);
   } else if (n == 2) {
     // level 3
     level = new Level();
-    player = new Player(level, 50 * PLAYER_SCALE, 300 * PLAYER_SCALE, 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
-    level.addPlatform(new Platform(0, 370, 150, 30, null));
-    level.addPlatform(new Platform(180, 320, 100, 20, platform2));
-    level.addPlatform(new Platform(320, 270, 100, 20, platform1));
-    level.addPlatform(new Platform(460, 220, 100, 20, platform2));
-    level.addPlatform(new Platform(360, 170, 100, 20, platform1));
-    level.addPlatform(new Platform(220, 120, 100, 20, platform2));
-    level.addPlatform(new Platform(80, 80, 100, 20, platform1));
-    level.addPlatform(new Platform(260, 50, 100, 20, platform2));
-    level.addPlatform(new Platform(440, 80, 100, 20, platform1));
-    level.addPlatform(new Platform(600, 100, 100, 20, platform2));
+    player = new Player(level, 50 * PLAYER_SCALE, (370 * PLAYER_SCALE) - (40 * PLAYER_SCALE), 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
+    level.addPlatform(new Platform(0, 370 * PLAYER_SCALE, 150, 30, null));
+    level.addPlatform(new Platform(180, 320 * PLAYER_SCALE, 100, 20, platform2));
+    level.addPlatform(new Platform(320, 270 * PLAYER_SCALE, 100, 20, platform1));
+    level.addPlatform(new Platform(460, 220 * PLAYER_SCALE, 100, 20, platform2));
+    level.addPlatform(new Platform(360, 170 * PLAYER_SCALE, 100, 20, platform1));
+    level.addPlatform(new Platform(220, 120 * PLAYER_SCALE, 100, 20, platform2));
+    level.addPlatform(new Platform(80, 80 * PLAYER_SCALE, 100, 20, platform1));
+    level.addPlatform(new Platform(260, 50 * PLAYER_SCALE, 100, 20, platform2));
+    level.addPlatform(new Platform(440, 80 * PLAYER_SCALE, 100, 20, platform1));
+    level.addPlatform(new Platform(600, 100 * PLAYER_SCALE, 100, 20, platform2));
     level.addGoal(new Goal(730, 60, 40, 40));
   } else {
     // game end
@@ -200,8 +200,8 @@ function loadLevel(n) {
 function keyPressed(UP_ARROW) {
   if ((key == "ArrowUp" || key == "w") && player.ground) {
     player.leap();
+    player.ground = false;
   }
-  player.ground = false;
   if (key == "p") {
     inMenu = !inMenu;
   }
