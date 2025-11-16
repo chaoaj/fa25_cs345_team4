@@ -33,10 +33,6 @@ function preload() {
   bg2 = loadImage("assets/background2.png");
   bg3 = loadImage("assets/background1fixed.png");
 
-  bg1.resize(800, 400);
-  bg2.resize(800, 400);
-  bg3.resize(800, 400);
-
   playerSprite = loadImage("assets/player-sprite.png");
   platform1 = loadImage("assets/platforms.png");
   platform2 = loadImage("assets/platforms2.png");
@@ -46,7 +42,7 @@ function preload() {
 
 
 function setup() {
-  createCanvas(1200, 800);
+  createCanvas(windowWidth, windowHeight);
   loadLevel(currentLevel);
   dukeDog = new DukeDog(player.x - 150, player.y, dukeSprite.width / 4, dukeSprite.height, 4, dukeSprite);
   menu = new Menu();
@@ -71,7 +67,7 @@ function draw() {
         rect(700, 100, 40, 40);
       }
     );
-        
+
     background(255);
     if (currentLevel == 0) {
       image(bg1, 0, 0, width, height);
