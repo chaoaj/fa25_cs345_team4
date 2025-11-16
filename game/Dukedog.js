@@ -69,10 +69,10 @@ class DukeDog {
       this.y,
       this.frameWidth,
       this.frameHeight,
-      this.currentFrame * this.frameWidth,
+      this.currentFrame * (this.frameWidth / DOG_SCALE),
       0,
-      this.frameWidth,
-      this.frameHeight
+      this.frameWidth / DOG_SCALE,
+      this.frameHeight / DOG_SCALE
     );
   }
 }
