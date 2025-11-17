@@ -10,6 +10,7 @@ class Starship extends Platform {
             stroke(color(255, 255, 255, 0));
             this.x = start + Math.sin(frameCount/20)*30; rect(this.x, this.y, this.w, this.h);
             image(this.sprite, this.x, this.y, this.w, this.h, 113, 82, 120, 129);
+            if (this.x <= mouseX && mouseX <= this.x + w && this.y <= mouseY && mouseY <= this.y + h)
             pop();
         }
     }
