@@ -52,7 +52,7 @@ class TophatDuck {
       player.y + player.h > this.y;
 
     if (touching) {
-      healthSystem.activateInvincibility(3000);
+      healthSystem.activateHearts();
       this.alive = false;
     }
   }

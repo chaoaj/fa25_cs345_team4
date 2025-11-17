@@ -191,9 +191,10 @@ class Menu {
       this.buttons.push(new Button(200 + spacing, buttonY, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
+            inMenu = true;
             menuID = 0;
             initializedMenu = false;
-            inMenu = true;
+            clear();
           }
         },
         function () {
