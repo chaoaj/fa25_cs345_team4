@@ -1,4 +1,3 @@
-
 class DukeDog {
   constructor(x, y, frameWidth, frameHeight, numFrames, spriteSheet) {
     this.x = x;
