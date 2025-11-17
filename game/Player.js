@@ -61,16 +61,12 @@
         this.nextLevel = currentLevel + 1;
       }
     }
-    // Gravity implementation
-    if (!this.ground) {
-      this.vy += this.grav;
-      if (this.vy >= this.terminal) {
+    // Gravity implenetation
+    this.vy += this.grav;
+    if (this.vy >= this.terminal) {
       this.vy = this.terminal;
     }
-      this.y += this.vy;
-  } else {
-    this.vy = 0;
-  }
+    this.y += this.vy;
     // collision call
     this.level.collision(this);
     // horizontal movement
