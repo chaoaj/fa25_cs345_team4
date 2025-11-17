@@ -29,16 +29,20 @@ class Level {
     }
     // x and y coords, then width and height adding to top left corner of a rect to get other corners
     for (let p of this.platforms) {
+      let isStarship = p instanceof Starship;
       let x1 = p.x;
       let y1 = p.y;
       let x2 = x1 + p.w;
       let y2 = y1 + p.h;
-      // vertical collision logic
+      // horizontal collision logic
       if (x1 - player.w <= player.x && player.x <= x2) {
         if (player.vy < 0) {
           if (player.y + player.vy <= y2 && player.y > y1) {
             player.vy = 0;
             player.y = y2 + this.padding;
+            if (isStarship) {
+              healthSystem.starshipDamage();
+            }
           }
         }
         if (player.vy > 0 && player.y < y1) {
@@ -46,10 +50,13 @@ class Level {
             player.y = y1 - player.h;
             player.vy = 0;
             player.ground = true;
+            if (isStarship) {
+              healthSystem.starshipDamage();
+            }
           }
         }
       }
-      // horizontal collision logic
+      // vertical collision logic
       if (
         player.y + player.h > y1 + this.padding &&
         player.y < y2 - this.padding
@@ -61,6 +68,9 @@ class Level {
           ) {
             player.x = x1 - player.w - this.padding;
             player.vx = 0;
+            if (isStarship) {
+              healthSystem.starshipDamage();
+            }
           }
         }
         if (player.vx < 0) {
@@ -68,6 +78,9 @@ class Level {
         if (player.x + player.vx <= x2 && player.x > (x1 + x2) / 2) {
           player.x = x2 + this.padding;
           player.vx = 0;
+          if (isStarship) {
+              healthSystem.starshipDamage();
+          }
         }
       }
     }
