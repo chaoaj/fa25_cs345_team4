@@ -60,15 +60,20 @@ function draw() {
     clear();
     menu.menu();
   } else {
-    pause = new Button(700, 100, 40, 40,
+    pause = new Button(740, 60, 40, 40,
       function () {
         if (mouseIsPressed && this.cursorDetect()) {
+          menuID = 0;
           inMenu = !inMenu;
           clear();
         }
       },
       function () {
-        rect(700, 100, 40, 40);
+        push();
+        fill(0);
+        rect(740, 60, 10, 40);
+        rect(760, 60, 10, 40);
+        pop();
       }
     );
 
@@ -201,7 +206,8 @@ function keyPressed(UP_ARROW) {
     player.leap();
     player.ground = false;
   }
-  if (key == "p") {
+  if (key == "p" && menuID != 2 && menuID != 1) {
+    menuID = 0;
     inMenu = !inMenu;
   }
   return false; //prevents scrolling via arrow key
