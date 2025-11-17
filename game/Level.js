@@ -22,8 +22,8 @@ class Level {
   }
   collision(player) {
     // canvas floor logic
-    if (player.y + player.vy >= 400 - player.h) {
-      player.y = 400 - player.h;
+    if (player.y + player.vy >= windowHeight - player.h) {
+      player.y = windowHeight - player.h;
       player.vy = 0;
       player.ground = true;
     }
