@@ -22,6 +22,7 @@ const PLAYER_SCALE = 2;
 const DUCK_SCALE = 2;
 const DOG_SCALE = 2;
 const STARSHIP_SCALE = 2;
+let WINDOW_SCALE = 0.9;
 
 function preload() {
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
@@ -47,7 +48,7 @@ function preload() {
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth * WINDOW_SCALE, windowHeight * WINDOW_SCALE);
   loadLevel(currentLevel);
   menu = new Menu();
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
@@ -169,7 +170,6 @@ function loadLevel(n) {
     tophatDuck = new TophatDuck(750, (170 * PLAYER_SCALE) - (108 * DUCK_SCALE * 0.8) + 5, 60 * DUCK_SCALE * 0.8, 108 * DUCK_SCALE * 0.8, 2, topHatDuckSprite);
     level.addPlatform(new Platform(550, 120 * PLAYER_SCALE, 80, 20, platform1));
     level.addGoal(new Goal(560, (120 * PLAYER_SCALE) - 40, 40, 40));
-    console.log(level.platforms);
   } else if (n == 2) {
     // level 3
     level = new Level();

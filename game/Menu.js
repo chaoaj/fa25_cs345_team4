@@ -25,9 +25,12 @@ class Menu {
             this.cursorDetect() ? fill(255) : fill(200);
             rect(300, 150, 200, 100);
             pop();
+            push();
+            fill(0);
             textSize(32);
             textAlign(CENTER);
             text("PLAY", 400, 210);
+            pop();
           }
         )
       );
@@ -47,9 +50,12 @@ class Menu {
             this.cursorDetect() ? fill(255) : fill(200);
             rect(300, 250, 200, 100);
             pop();
+            push();
+            fill(0);
             textSize(32);
             textAlign(CENTER);
             text("Level Select", 400, 310);
+            pop();
           }
         )
       );

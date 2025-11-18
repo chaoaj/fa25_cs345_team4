@@ -13,13 +13,12 @@ class DukeDog {
 
     this.speed = 1.5; // follow speed
     this.verticalSpeed = 1;
+    this.verticalDelay = 30;
+    this.verticalTimer = 0;
+    this.upwardSpeed = 0.25;
   }
 
   update() {
-    if (!player) {
-      return;
-    }
-    // --- FOLLOW PLAYER ---
     if (player) {
       if (player.x > this.x) {
         this.x += this.speed;
@@ -28,8 +27,21 @@ class DukeDog {
       }
 
       let dy = player.y - this.y;
+
+      if (dy < 0) {
+        this.verticalTimer++;
+      } else {
+        this.verticalTimer = 0;
+      }
+
       if (Math.abs(dy) > 5) {
-        this.y += dy * 0.05;
+        if (dy < 0) {
+          if (this.verticalTimer >= this.verticalDelay) {
+            this.y += dy * this.upwardSpeed;
+          }
+        } else {
+          this.y += dy * 0.05;
+        }
       }
     }
 
