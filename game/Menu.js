@@ -186,8 +186,8 @@ class Menu {
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             inMenu = true;
-            menuID = 0;
             initializedMenu = false;
+            menuID = 0;
             clear();
           }
         },
@@ -213,3 +213,4 @@ class Menu {
     }
   }
 }
+

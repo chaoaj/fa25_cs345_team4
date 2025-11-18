@@ -1,13 +1,13 @@
 class TophatDuck {
-    constructor(x, y, w, h, numFrames, spriteSheet) {
+    constructor(x, y, numFrames, spriteSheet) {
     this.x = x;
     this.y = y;
     this.baseY = y;
-    this.w = w;
-    this.h = h;
+    this.scale = 0.3;
     this.numFrames = numFrames;
     this.spriteSheet = spriteSheet;
-
+    this.w = (spriteSheet.width / numFrames) * this.scale;
+    this.h = spriteSheet.height * this.scale;
     this.frameWidth = spriteSheet.width / numFrames;
     this.frameHeight = spriteSheet.height;
     this.currentFrame = 0;
