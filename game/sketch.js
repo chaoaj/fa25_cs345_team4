@@ -24,12 +24,6 @@ let DOG_SCALE;
 let STARSHIP_SCALE;
 
 function preload() {
-  WINDOW_SCALE = Math.min(windowWidth / 1536, windowHeight / 703);
-  PLAYER_SCALE = 1.5 * WINDOW_SCALE;
-  DUCK_SCALE = PLAYER_SCALE;
-  DOG_SCALE = PLAYER_SCALE;
-  STARSHIP_SCALE = PLAYER_SCALE;
-  console.log(windowWidth / 1536, windowHeight / 703);
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
 
   starshipSprite = loadImage("assets/sprint2/starship.png");
@@ -53,6 +47,11 @@ function preload() {
 
 
 function setup() {
+  WINDOW_SCALE = Math.min(windowWidth / 1536, windowHeight / 703);
+  PLAYER_SCALE = 1.5 * WINDOW_SCALE;
+  DUCK_SCALE = PLAYER_SCALE;
+  DOG_SCALE = PLAYER_SCALE;
+  STARSHIP_SCALE = PLAYER_SCALE;
   createCanvas(windowWidth, windowHeight);
   loadLevel(currentLevel);
   menu = new Menu();
