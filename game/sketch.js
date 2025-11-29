@@ -17,14 +17,19 @@ let unlockedLevels = new Set([0]);
 let sunglassesDuck;
 let sunglassesDuckSprite;
 let tophatDuck;
-
-const PLAYER_SCALE = 2;
-const DUCK_SCALE = 2;
-const DOG_SCALE = 2;
-const STARSHIP_SCALE = 2;
-let WINDOW_SCALE = 0.9;
+let WINDOW_SCALE;
+let PLAYER_SCALE;
+let DUCK_SCALE;
+let DOG_SCALE;
+let STARSHIP_SCALE;
 
 function preload() {
+  WINDOW_SCALE = Math.min(windowWidth / 1536, windowHeight / 703);
+  PLAYER_SCALE = 1.5 * WINDOW_SCALE;
+  DUCK_SCALE = PLAYER_SCALE;
+  DOG_SCALE = PLAYER_SCALE;
+  STARSHIP_SCALE = PLAYER_SCALE;
+  console.log(windowWidth / 1536, windowHeight / 703);
   dukeSprite = loadImage("assets/OFFICIALDukeDog.jpg");
 
   starshipSprite = loadImage("assets/sprint2/starship.png");

@@ -4,11 +4,13 @@ class Menu {
   }
   menu() {
     // Default menu
+    let widthFactor = windowWidth / 800;
+    let heightFactor = windowHeight / 400;
     if (menuID == 0) {
       if (!initializedMenu) {
       this.buttons = [];
       this.buttons.push(
-        new Button(300, 150, 200, 100,
+        new Button(300 * widthFactor, 150 * heightFactor, 200 * widthFactor, 100 * heightFactor,
           // defines what happens when the button is clicked
           function () {
             if (mouseIsPressed && this.cursorDetect()) {
@@ -23,19 +25,19 @@ class Menu {
           function () {
             push();
             this.cursorDetect() ? fill(255) : fill(200);
-            rect(300, 150, 200, 100);
+            rect(300 * widthFactor, 150 * heightFactor, 200 * widthFactor, 100 * heightFactor);
             pop();
             push();
             fill(0);
             textSize(32);
             textAlign(CENTER);
-            text("PLAY", 400, 210);
+            text("PLAY", 400 * widthFactor, 210 * heightFactor);
             pop();
           }
         )
       );
       this.buttons.push(
-        new Button(300, 250, 200, 100,
+        new Button(300 * widthFactor, 250 * heightFactor, 200 * widthFactor, 100 * heightFactor,
           // defines what happens when the button is clicked
           function () {
             if (mouseIsPressed && this.cursorDetect()) {
@@ -48,13 +50,13 @@ class Menu {
           function () {
             push();
             this.cursorDetect() ? fill(255) : fill(200);
-            rect(300, 250, 200, 100);
+            rect(300 * widthFactor, 250 * heightFactor, 200 * widthFactor, 100 * heightFactor);
             pop();
             push();
             fill(0);
             textSize(32);
             textAlign(CENTER);
-            text("Level Select", 400, 310);
+            text("Level Select", 400 * widthFactor, 310 * heightFactor);
             pop();
           }
         )
@@ -67,7 +69,7 @@ class Menu {
       if (!initializedMenu) {
       this.buttons = [];
       // would've done a loop to make each button but it didn't draw properly
-      this.buttons.push(new Button(50, 100, 50, 50,
+      this.buttons.push(new Button(50 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor,
          function () {
           if (mouseIsPressed && this.cursorDetect() && unlockedLevels.has(0)) {
             currentLevel = 0;
@@ -85,14 +87,14 @@ class Menu {
           } else {
             fill(0);
           }
-           rect(50, 100, 50, 50);
+           rect(50 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor);
           pop();
           textSize(32);
           textAlign(CENTER);
-          text(1, 75, 135);
+          text(1, 75 * widthFactor, this.y + 25 * heightFactor);
         }
       ));
-      this.buttons.push(new Button(150, 100, 50, 50,
+      this.buttons.push(new Button(150 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor,
          function () {
           if (mouseIsPressed && this.cursorDetect() && unlockedLevels.has(1)) {
             currentLevel = 1;
@@ -110,14 +112,14 @@ class Menu {
           } else {
             fill(0);
           }
-           rect(150, 100, 50, 50);
+           rect(150 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor);
           pop();
           textSize(32);
           textAlign(CENTER);
-          text(2, 175, 135);
+          text(2, 175 * widthFactor, this.y + 25 * heightFactor);
         }
       ));
-      this.buttons.push(new Button(250, 100, 50, 50,
+      this.buttons.push(new Button(250 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor,
          function () {
           if (mouseIsPressed && this.cursorDetect() && unlockedLevels.has(2)) {
             currentLevel = 2;
@@ -135,11 +137,11 @@ class Menu {
           } else {
             fill(0);
           }
-           rect(250, 100, 50, 50);
+           rect(250 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor);
           pop();
           textSize(32);
           textAlign(CENTER);
-          text(3, 275, 135);
+          text(3, 275 * widthFactor, this.y + 25 * heightFactor);
         }
       ));
       textAlign(CENTER, CENTER);
@@ -160,11 +162,11 @@ class Menu {
       if (!initializedMenu) {
         this.buttons = [];
 
-        let buttonY = 200;
-        let spacing = 220;
+        let buttonY = 200 * heightFactor;
+        let spacing = 220 * widthFactor;
 
         // PLAY AGAIN button (left)
-        this.buttons.push(new Button(200, buttonY, 200, 100,
+        this.buttons.push(new Button(200 * widthFactor, buttonY, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             currentLevel = 0;
@@ -188,7 +190,7 @@ class Menu {
       ));
 
       // MAIN MENU button (right)
-      this.buttons.push(new Button(200 + spacing, buttonY, 200, 100,
+      this.buttons.push(new Button(200 * widthFactor + spacing, buttonY, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             inMenu = true;
