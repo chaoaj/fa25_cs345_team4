@@ -62,6 +62,12 @@ function setup() {
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  WINDOW_SCALE = Math.min(windowWidth / 1536, windowHeight / 703);
+  PLAYER_SCALE = 1.5 * WINDOW_SCALE;
+  DUCK_SCALE = PLAYER_SCALE;
+  DOG_SCALE = PLAYER_SCALE;
+  STARSHIP_SCALE = PLAYER_SCALE;
+  initializedMenu = false;
 }
 
 function draw() {
