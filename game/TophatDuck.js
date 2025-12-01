@@ -1,13 +1,13 @@
 class TophatDuck {
-    constructor(x, y, numFrames, spriteSheet) {
+    constructor(x, y, displayWidth, displayHeight, numFrames, spriteSheet) {
     this.x = x;
     this.y = y;
     this.baseY = y;
     this.scale = 0.3;
+    this.displayWidth = displayWidth;
+    this.displayHeight = displayHeight;
     this.numFrames = numFrames;
     this.spriteSheet = spriteSheet;
-    this.w = (spriteSheet.width / numFrames) * this.scale;
-    this.h = spriteSheet.height * this.scale;
     this.frameWidth = spriteSheet.width / numFrames;
     this.frameHeight = spriteSheet.height;
     this.currentFrame = 0;
@@ -35,7 +35,7 @@ class TophatDuck {
     if (!this.alive) {
       return;
     }
-    image(this.spriteSheet, this.x, this.y, this.w, this.h,
+    image(this.spriteSheet, this.x, this.y, this.displayWidth, this.displayHeight,
     this.currentFrame * this.frameWidth, 0, this.frameWidth, this.frameHeight
     );
 
@@ -45,10 +45,10 @@ class TophatDuck {
     if (!this.alive) {
       return;
     }
-    const touching =
-      player.x < this.x + this.w &&
+    let touching =
+      player.x < this.x + this.displayWidth &&
       player.x + player.w > this.x &&
-      player.y < this.y + this.h &&
+      player.y < this.y + this.displayHeight &&
       player.y + player.h > this.y;
 
     if (touching) {

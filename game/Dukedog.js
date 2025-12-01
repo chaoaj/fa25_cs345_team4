@@ -1,5 +1,7 @@
 class DukeDog {
-  constructor(x, y, frameWidth, frameHeight, numFrames, spriteSheet) {
+  constructor(level, x, y, frameWidth, frameHeight, numFrames, spriteSheet, windowScale) {
+    this.level = level;
+    this.windowScale = windowScale;
     this.x = x;
     this.y = y;
     this.frameWidth = frameWidth;
@@ -7,17 +9,20 @@ class DukeDog {
     this.numFrames = numFrames;
     this.spriteSheet = spriteSheet;
 
+    this.w = frameWidth;
+    this.h = frameHeight - 65;
+
     this.currentFrame = 0;
     this.frameCounter = 0;
     this.frameSpeed = 6; // animation speed
 
     this.speed = 1.5; // follow speed
-    this.verticalSpeed = 1;
-    this.verticalDelay = 30;
-    this.verticalTimer = 0;
-    this.upwardSpeed = 0.25;
+    this.vy = 0;
+    this.grav = 4;
+    this.terminal = 50;
+    this.ground = false;
+    this.isDukeDog = true;
   }
-
   update() {
     if (player) {
       if (player.x > this.x) {
@@ -26,23 +31,13 @@ class DukeDog {
         this.x -= this.speed;
       }
 
-      let dy = player.y - this.y;
-
-      if (dy < 0) {
-        this.verticalTimer++;
-      } else {
-        this.verticalTimer = 0;
+      this.vy += this.grav;
+      if (this.vy > this.terminal) {
+        this.vy = this.terminal;
       }
+      this.y += this.vy;
 
-      if (Math.abs(dy) > 5) {
-        if (dy < 0) {
-          if (this.verticalTimer >= this.verticalDelay) {
-            this.y += dy * this.upwardSpeed;
-          }
-        } else {
-          this.y += dy * 0.05;
-        }
-      }
+      this.level.collision(this);
     }
 
     // --- ANIMATION ---
@@ -59,7 +54,6 @@ class DukeDog {
       if (healthSystem.dogDamageCooldown <= 0 && !player.invincible) {
         healthSystem.dogDamage();
       }
-
     }
   }
 
