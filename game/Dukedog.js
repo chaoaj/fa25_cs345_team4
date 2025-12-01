@@ -22,13 +22,16 @@ class DukeDog {
     this.terminal = 50;
     this.ground = false;
     this.isDukeDog = true;
+    this.direction = true;
   }
   update() {
     if (player) {
       if (player.x > this.x) {
         this.x += this.speed;
+        this.direction = true;
       } else if (player.x < this.x) {
         this.x -= this.speed;
+        this.direction = false;
       }
 
       this.vy += this.grav;
@@ -68,16 +71,33 @@ class DukeDog {
   }
 
   display() {
-    image(
-      this.spriteSheet,
-      this.x,
-      this.y,
-      this.frameWidth,
-      this.frameHeight,
-      this.currentFrame * (this.frameWidth / DOG_SCALE),
-      0,
-      this.frameWidth / DOG_SCALE,
-      this.frameHeight / DOG_SCALE
-    );
+    push();
+    if (this.direction) {
+      image(
+        this.spriteSheet,
+        this.x,
+        this.y,
+        this.frameWidth,
+        this.frameHeight,
+        this.currentFrame * (this.frameWidth / DOG_SCALE),
+        0,
+        this.frameWidth / DOG_SCALE,
+        this.frameHeight / DOG_SCALE
+      );
+    } else {
+      scale(-1, 1);
+      image(
+        this.spriteSheet,
+        -this.x - this.frameWidth/2,
+        this.y,
+        this.frameWidth,
+        this.frameHeight,
+        this.currentFrame * (this.frameWidth / DOG_SCALE),
+        0,
+        this.frameWidth / DOG_SCALE,
+        this.frameHeight / DOG_SCALE
+      );
+    }
+    pop();
   }
 }
