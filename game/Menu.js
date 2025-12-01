@@ -5,10 +5,11 @@ class Menu {
   menu() {
     // Default menu
     if (menuID == 0) {
+
       if (!initializedMenu) {
       this.buttons = [];
       this.buttons.push(
-        new Button(300, 150, 200, 100,
+        new Button(400, 250, 200, 100,
           // defines what happens when the button is clicked
           function () {
             if (mouseIsPressed && this.cursorDetect()) {
@@ -23,19 +24,19 @@ class Menu {
           function () {
             push();
             this.cursorDetect() ? fill(255) : fill(200);
-            rect(300, 150, 200, 100);
+            rect(400, 250, this.w, this.h);
             pop();
             push();
             fill(0);
             textSize(32);
             textAlign(CENTER);
-            text("PLAY", 400, 210);
+            text("PLAY", 400 + this.w / 2, 250 + this.h / 2);
             pop();
           }
         )
       );
       this.buttons.push(
-        new Button(300, 250, 200, 100,
+        new Button(700, 250, 200, 100,
           // defines what happens when the button is clicked
           function () {
             if (mouseIsPressed && this.cursorDetect()) {
@@ -48,13 +49,13 @@ class Menu {
           function () {
             push();
             this.cursorDetect() ? fill(255) : fill(200);
-            rect(300, 250, 200, 100);
+            rect(700, this.y, this.w, this.h);
             pop();
             push();
             fill(0);
             textSize(32);
             textAlign(CENTER);
-            text("Level Select", 400, 310);
+            text("Level Select", 700 + this.w / 2, this.y + this.h / 2);
             pop();
           }
         )
@@ -164,7 +165,7 @@ class Menu {
         let spacing = 220;
 
         // PLAY AGAIN button (left)
-        this.buttons.push(new Button(200, buttonY, 200, 100,
+        this.buttons.push(new Button(350, 250, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             currentLevel = 0;
@@ -178,17 +179,17 @@ class Menu {
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(this.x, this.y, this.w, this.h);
+          rect(350, 250, this.w, this.h);
           pop();
           textSize(32);
           textAlign(CENTER);
           fill(0);
-          text("PLAY AGAIN", this.x + this.w / 2, this.y + this.h / 2);
+          text("PLAY AGAIN", 350 + this.w / 2, 250 + this.h / 2);
         }
       ));
 
       // MAIN MENU button (right)
-      this.buttons.push(new Button(200 + spacing, buttonY, 200, 100,
+      this.buttons.push(new Button(530 + spacing, 180, 200, 100,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             inMenu = true;
@@ -200,12 +201,12 @@ class Menu {
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(this.x, this.y, this.w, this.h);
+          rect(750, 200, this.w, this.h);
           pop();
           textSize(32);
           textAlign(CENTER);
           fill(0);
-          text("MAIN MENU", this.x + this.w / 2, this.y + this.h / 2);
+          text("MAIN MENU", 750 + this.w / 2, 200 + this.h / 2);
         }
       ));
 

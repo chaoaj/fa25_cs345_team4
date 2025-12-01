@@ -48,7 +48,7 @@ function preload() {
 
 
 function setup() {
-  createCanvas(windowWidth * WINDOW_SCALE, windowHeight * WINDOW_SCALE);
+  createCanvas(windowWidth, windowHeight);
   loadLevel(currentLevel);
   menu = new Menu();
   healthSystem = new HealthSystem(healthBar, heart3, heart2, heart1, heart0);
