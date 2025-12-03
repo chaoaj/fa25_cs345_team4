@@ -17,6 +17,7 @@ let unlockedLevels = new Set([0]);
 let sunglassesDuck;
 let sunglassesDuckSprite;
 let tophatDuck;
+let buttonPressed = false;
 let WINDOW_SCALE;
 let PLAYER_SCALE;
 let DUCK_SCALE;
@@ -246,4 +247,9 @@ function keyPressed(UP_ARROW) {
     inMenu = !inMenu;
   }
   return false; //prevents scrolling via arrow key
+}
+
+//Lets buttons be clicked again after being clicked on.
+function mouseReleased() {
+  buttonPressed = false;
 }

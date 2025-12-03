@@ -7,18 +7,18 @@ class Menu {
     let widthFactor = windowWidth / 800;
     let heightFactor = windowHeight / 400;
     if (menuID == 0) {
-
       if (!initializedMenu) {
       this.buttons = [];
       this.buttons.push(
         new Button(300 * widthFactor, 150 * heightFactor, 200 * widthFactor, 100 * heightFactor,
           // defines what happens when the button is clicked
           function () {
-            if (mouseIsPressed && this.cursorDetect()) {
+            if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
               currentLevel = 0;
               loadLevel(currentLevel);
               inMenu = false;
               initializedMenu = false;
+              buttonPressed = true; 
               clear();
           }
         },
@@ -41,9 +41,10 @@ class Menu {
         new Button(300 * widthFactor, 250 * heightFactor, 200 * widthFactor, 100 * heightFactor,
           // defines what happens when the button is clicked
           function () {
-            if (mouseIsPressed && this.cursorDetect()) {
+            if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
               menuID = 1;
               initializedMenu = false;
+              buttonPressed = true;
               clear();
             }
           },
@@ -72,12 +73,13 @@ class Menu {
       // would've done a loop to make each button but it didn't draw properly
       this.buttons.push(new Button(50 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor,
          function () {
-          if (mouseIsPressed && this.cursorDetect() && unlockedLevels.has(0)) {
+          if (mouseIsPressed && this.cursorDetect() && !buttonPressed && unlockedLevels.has(0)) {
             currentLevel = 0;
             loadLevel(currentLevel);
             menuID = 0;
             inMenu = false;
             initializedMenu = false;
+            buttonPressed = true;
             clear();
           }
         },
@@ -97,12 +99,13 @@ class Menu {
       ));
       this.buttons.push(new Button(150 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor,
          function () {
-          if (mouseIsPressed && this.cursorDetect() && unlockedLevels.has(1)) {
+          if (mouseIsPressed && this.cursorDetect() && !buttonPressed && unlockedLevels.has(1)) {
             currentLevel = 1;
             loadLevel(currentLevel);
             menuID = 0;
             inMenu = false;
             initializedMenu = false;
+            buttonPressed = true;
             clear();
           }
         },
@@ -122,12 +125,13 @@ class Menu {
       ));
       this.buttons.push(new Button(250 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor,
          function () {
-          if (mouseIsPressed && this.cursorDetect() && unlockedLevels.has(2)) {
+          if (mouseIsPressed && this.cursorDetect() && !buttonPressed && unlockedLevels.has(2)) {
             currentLevel = 2;
             loadLevel(currentLevel);
             menuID = 0;
             inMenu = false;
             initializedMenu = false;
+            buttonPressed = true;
             clear();
           }
         },
@@ -169,46 +173,48 @@ class Menu {
         // PLAY AGAIN button (left)
         this.buttons.push(new Button(250, 250, 200 * widthFactor, 100 * heightFactor,
         function () {
-          if (mouseIsPressed && this.cursorDetect()) {
+          if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
             currentLevel = 0;
             loadLevel(currentLevel);
             inMenu = false;
             menuID = 0;
             initializedMenu = false;
-
-          }
-        },
-        function () {
-          push();
-          this.cursorDetect() ? fill(255) : fill(200);
-          rect(250, 250, this.w, this.h);
-          pop();
-          textSize(32);
-          textAlign(CENTER);
-          fill(0);
-          text("PLAY AGAIN", 250 + this.w / 2, 250 + this.h / 2);
-        }
-      ));
-
-      // MAIN MENU button (right)
-      this.buttons.push(new Button(750, 250, 200 * widthFactor, 100 * heightFactor,
-        function () {
-          if (mouseIsPressed && this.cursorDetect()) {
-            inMenu = true;
-            initializedMenu = false;
-            menuID = 0;
+            buttonPressed = true;
             clear();
           }
         },
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(750, 250, this.w, this.h);
+          rect(this.x, this.y, this.w, this.h);
           pop();
           textSize(32);
           textAlign(CENTER);
           fill(0);
-          text("MAIN MENU", 750 + this.w / 2, 250 + this.h / 2);
+          text("PLAY AGAIN", this.x + this.w / 2, this.y + this.h / 2);
+        }
+      ));
+
+      // MAIN MENU button (right)
+      this.buttons.push(new Button(200 * widthFactor + spacing, buttonY, 200 * widthFactor, 100 * heightFactor,
+        function () {
+          if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
+            inMenu = true;
+            initializedMenu = false;
+            menuID = 0;
+            buttonPressed = true;
+            clear();
+          }
+        },
+        function () {
+          push();
+          this.cursorDetect() ? fill(255) : fill(200);
+          rect(this.x, this.y, this.w, this.h);
+          pop();
+          textSize(32);
+          textAlign(CENTER);
+          fill(0);
+          text("MAIN MENU", this.x + this.w / 2, this.y + this.h / 2);
         }
       ));
 

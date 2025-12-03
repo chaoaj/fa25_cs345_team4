@@ -34,6 +34,7 @@
     this.nextLevel = null;
     this.invincible = false;
     this.invinciblityTimer = 0;
+    this.direction = true;
   }
   // gravity, movement and calls collision.
   update() {
@@ -71,11 +72,13 @@
     this.level.collision(this);
     // horizontal movement
     if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
+      this.direction = true;
       this.vx += 2;
       if (this.vx > 10) {
         this.vx = 10;
       }
     } else if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
+      this.direction = false;
       this.vx -= 2;
       if (this.vx < -10) {
         this.vx = -10;
@@ -95,9 +98,6 @@
 
   drawSprite() {
     let frameWidth = this.sprite.width / this.frameCount;
-    let sx = floor(this.frameIndex / this.frameSpeed) * frameWidth;
-    image(this.sprite, this.x, this.y, this.w, this.h, sx, 0, frameWidth, this.sprite.height);
-
     if (!this.ground) {
       this.frameIndex = 3 * this.frameSpeed;
     } else if (this.vx !== 0) {
@@ -105,5 +105,15 @@
     } else {
       this.frameIndex = 0;
     }
+    let sx = floor(this.frameIndex / this.frameSpeed) * frameWidth;
+    push();
+    if (this.direction) {
+      scale(1, 1)
+      image(this.sprite, this.x, this.y, this.w, this.h, sx, 0, frameWidth, this.sprite.height);
+    } else {
+      scale(-1, 1);
+      image(this.sprite, -this.x - this.w, this.y, this.w, this.h, sx, 0, frameWidth, this.sprite.height);
+    }
+    pop();
   }
 }
