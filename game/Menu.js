@@ -196,7 +196,7 @@ class Menu {
       ));
 
       // MAIN MENU button (right)
-      this.buttons.push(new Button(200 * widthFactor + spacing, buttonY, 200 * widthFactor, 100 * heightFactor,
+      this.buttons.push(new Button(200 * widthFactor + spacing, 250, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
             inMenu = true;
@@ -209,12 +209,12 @@ class Menu {
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(this.x, this.y, this.w, this.h);
+          rect(this.x, 250, this.w, this.h);
           pop();
           textSize(32);
           textAlign(CENTER);
           fill(0);
-          text("MAIN MENU", this.x + this.w / 2, this.y + this.h / 2);
+          text("MAIN MENU", this.x + this.w / 2, 250 + this.h / 2);
         }
       ));
 
