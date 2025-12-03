@@ -167,7 +167,7 @@ class Menu {
         let spacing = 220 * widthFactor;
 
         // PLAY AGAIN button (left)
-        this.buttons.push(new Button(200 * widthFactor, buttonY, 200 * widthFactor, 100 * heightFactor,
+        this.buttons.push(new Button(250, 250, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             currentLevel = 0;
@@ -181,17 +181,17 @@ class Menu {
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(350, 250, this.w, this.h);
+          rect(250, 250, this.w, this.h);
           pop();
           textSize(32);
           textAlign(CENTER);
           fill(0);
-          text("PLAY AGAIN", 350 + this.w / 2, 250 + this.h / 2);
+          text("PLAY AGAIN", 250 + this.w / 2, 250 + this.h / 2);
         }
       ));
 
       // MAIN MENU button (right)
-      this.buttons.push(new Button(200 * widthFactor + spacing, buttonY, 200 * widthFactor, 100 * heightFactor,
+      this.buttons.push(new Button(750, 250, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect()) {
             inMenu = true;
@@ -203,12 +203,12 @@ class Menu {
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(750, 200, this.w, this.h);
+          rect(750, 250, this.w, this.h);
           pop();
           textSize(32);
           textAlign(CENTER);
           fill(0);
-          text("MAIN MENU", 750 + this.w / 2, 200 + this.h / 2);
+          text("MAIN MENU", 750 + this.w / 2, 250 + this.h / 2);
         }
       ));
 

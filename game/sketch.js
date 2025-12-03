@@ -201,7 +201,7 @@ function loadLevel(n) {
     const tophatheight = 108 * smaller;
     const tophatwidth = 60 * smaller;
     level.addPlatform(new Platform(320 * PLAYER_SCALE, 230 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
-    tophatDuck = new TophatDuck(320 * PLAYER_SCALE + 30, 230 * PLAYER_SCALE - tophatheight, tophatwidth, tophatheight, 2, topHatDuckSprite);
+    tophatDuck = new TophatDuck(322 * PLAYER_SCALE + 30, 285 * PLAYER_SCALE - tophatheight, tophatwidth, tophatheight, 2, topHatDuckSprite);
     level.addPlatform(new Platform(400 * PLAYER_SCALE, 275 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2))
     level.addPlatform(new Platform(480 * PLAYER_SCALE, 320 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
     level.addGoal(new Goal(560 * PLAYER_SCALE, 280 * PLAYER_SCALE, 40, 40));

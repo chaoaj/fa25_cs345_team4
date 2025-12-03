@@ -7,7 +7,9 @@ class Goal {
   }
   show() {
     push();
-    fill(0);
+    drawingContext.shadowBlur = 50;                 
+    drawingContext.shadowColor = 'rgba(255, 255, 255, 0.9)';
+    fill(255,250,180);
     rect(this.x, this.y, this.w, this.h);
     pop();
   }

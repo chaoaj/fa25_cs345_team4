@@ -3,9 +3,9 @@ class TophatDuck {
     this.x = x;
     this.y = y;
     this.baseY = y;
-    this.scale = 0.3;
-    this.displayWidth = displayWidth;
-    this.displayHeight = displayHeight;
+    this.scale = 0.8;
+    this.displayWidth = displayWidth * this.scale;
+    this.displayHeight = displayHeight * 0.5;
     this.numFrames = numFrames;
     this.spriteSheet = spriteSheet;
     this.frameWidth = spriteSheet.width / numFrames;
