@@ -5,8 +5,8 @@ class Button {
       if (mouseIsPressed && this.cursorDetect()) console.log("hi");
     },
     shape = function () {
-        rect(this.x, this.y, this.w, this.h);
-    } 
+      rect(this.x, this.y, this.w, this.h);
+    }
   ) {
     // dimension variables
     this.x = x;

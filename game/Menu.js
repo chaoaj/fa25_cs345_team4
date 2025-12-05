@@ -18,7 +18,7 @@ class Menu {
               loadLevel(currentLevel);
               inMenu = false;
               initializedMenu = false;
-              buttonPressed = true; 
+              buttonPressed = true;
               clear();
           }
         },
@@ -68,6 +68,7 @@ class Menu {
     }
     // Level select menu
     if (menuID == 1) {
+      background('#D7BFDC');
       if (!initializedMenu) {
       this.buttons = [];
       // would've done a loop to make each button but it didn't draw properly
@@ -86,7 +87,7 @@ class Menu {
         function () {
           push();
           if(unlockedLevels.has(0)) {
-            this.cursorDetect() ? fill(255) : fill(200);
+            this.cursorDetect() ? fill(255,250,180) : fill(255,250,180);
           } else {
             fill(0);
           }
@@ -112,7 +113,7 @@ class Menu {
         function () {
           push();
           if(unlockedLevels.has(1)) {
-            this.cursorDetect() ? fill(255) : fill(200);
+            this.cursorDetect() ? fill(255,250,180) : fill(255,250,180);
           } else {
             fill(0);
           }
@@ -138,7 +139,7 @@ class Menu {
         function () {
           push();
           if(unlockedLevels.has(2)) {
-            this.cursorDetect() ? fill(255) : fill(200);
+            this.cursorDetect() ? fill(255,250,180) : fill(255,250,180);
           } else {
             fill(0);
           }
@@ -154,7 +155,7 @@ class Menu {
       fill(0);
       initializedMenu = true;
       }
-      text("Have to get to a level to unlock the level select button for it.", width/2, height/2, 400);
+      text("Can't access some levels? That means you need to play those levels first!", width/2, height/2, 400);
     }
     // Game over menu
     if (menuID == 2) {
@@ -228,4 +229,3 @@ class Menu {
     }
   }
 }
-
