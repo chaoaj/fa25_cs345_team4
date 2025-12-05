@@ -7,6 +7,7 @@ class Menu {
     let widthFactor = windowWidth / 800;
     let heightFactor = windowHeight / 400;
     if (menuID == 0) {
+      background('#D7BFDC');
       if (!initializedMenu) {
       this.buttons = [];
       this.buttons.push(
@@ -25,7 +26,7 @@ class Menu {
           // defines what drawing elements are used in a button
           function () {
             push();
-            this.cursorDetect() ? fill(255) : fill(200);
+            this.cursorDetect() ? fill(255) : fill(255,250,180);
             rect(300 * widthFactor, 150 * heightFactor, 200 * widthFactor, 100 * heightFactor);
             pop();
             push();
@@ -51,7 +52,7 @@ class Menu {
           // defines what drawing elements are used in a button
           function () {
             push();
-            this.cursorDetect() ? fill(255) : fill(200);
+            this.cursorDetect() ? fill(255) : fill(255,250,180);
             rect(300 * widthFactor, 250 * heightFactor, 200 * widthFactor, 100 * heightFactor);
             pop();
             push();
