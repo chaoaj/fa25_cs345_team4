@@ -76,7 +76,9 @@ function draw() {
     clear();
     menu.menu();
   } else {
-    pause = new Button(740, 60, 40, 40,
+
+    const pauseX = width - (40 * WINDOW_SCALE) - 20;
+    pause = new Button(pauseX, 20, 40 * WINDOW_SCALE, 40 * WINDOW_SCALE,
       function () {
         if (mouseIsPressed && this.cursorDetect()) {
           menuID = 0;
@@ -87,8 +89,8 @@ function draw() {
       function () {
         push();
         fill(0);
-        rect(740, 60, 10, 40);
-        rect(760, 60, 10, 40);
+        rect(pauseX + 8 * WINDOW_SCALE, 20, 10 * WINDOW_SCALE, 40 * WINDOW_SCALE);
+        rect(pauseX + 22 * WINDOW_SCALE, 20, 10 * WINDOW_SCALE, 40 * WINDOW_SCALE);
         pop();
       }
     );
