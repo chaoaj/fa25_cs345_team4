@@ -21,11 +21,9 @@ class Level {
       p.show();
   }
   collision(player) {
-    // canvas floor logic
+    // canvas floor death logic
     if (player.y + player.vy >= windowHeight - player.h) {
-      player.y = windowHeight - player.h;
-      player.vy = 0;
-      player.ground = true;
+      healthSystem.currHearts = 0;
     }
     // x and y coords, then width and height adding to top left corner of a rect to get other corners
     for (let p of this.platforms) {

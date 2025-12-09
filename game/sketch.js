@@ -107,10 +107,6 @@ function draw() {
     pause.clicked();
     // updates the player and collisions
     player.update();
-    if (player.y > 500) {
-      healthSystem.currHearts = 0;
-    }
-
     if (player.nextLevel !== null) {
       if (player.nextLevel <= 2) {
         currentLevel = player.nextLevel;
