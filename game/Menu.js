@@ -31,7 +31,7 @@ class Menu {
             pop();
             push();
             fill(0);
-            textSize(32);
+            textSize(32 * WINDOW_SCALE);
             textAlign(CENTER);
             text("PLAY", 400 * widthFactor, 210 * heightFactor);
             pop();
@@ -57,7 +57,7 @@ class Menu {
             pop();
             push();
             fill(0);
-            textSize(32);
+            textSize(32 * WINDOW_SCALE);
             textAlign(CENTER);
             text("Level Select", 400 * widthFactor, 310 * heightFactor);
             pop();
@@ -94,7 +94,7 @@ class Menu {
           }
            rect(50 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor);
           pop();
-          textSize(32);
+          textSize(32 * WINDOW_SCALE);
           textAlign(CENTER);
           text(1, 75 * widthFactor, this.y + 25 * heightFactor);
         }
@@ -120,7 +120,7 @@ class Menu {
           }
            rect(150 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor);
           pop();
-          textSize(32);
+          textSize(32 * WINDOW_SCALE);
           textAlign(CENTER);
           text(2, 175 * widthFactor, this.y + 25 * heightFactor);
         }
@@ -146,13 +146,13 @@ class Menu {
           }
            rect(250 * widthFactor, 100 * heightFactor, 50 * widthFactor, 50 * heightFactor);
           pop();
-          textSize(32);
+          textSize(32 * WINDOW_SCALE);
           textAlign(CENTER);
           text(3, 275 * widthFactor, this.y + 25 * heightFactor);
         }
       ));
       textAlign(CENTER, CENTER);
-      textSize(32);
+      textSize(32 * WINDOW_SCALE);
       fill(0);
       initializedMenu = true;
       }
@@ -161,7 +161,7 @@ class Menu {
     // Game over menu
     if (menuID == 2) {
       background(0);
-      textSize(48);
+      textSize(48 * WINDOW_SCALE);
       textAlign(CENTER);
       fill(255, 0, 0);
       text("GAME OVER", width / 2, 80);
@@ -173,7 +173,7 @@ class Menu {
         let spacing = 220 * widthFactor;
 
         // PLAY AGAIN button (left)
-        this.buttons.push(new Button(250, 250, 200 * widthFactor, 100 * heightFactor,
+        this.buttons.push(new Button(200 * widthFactor, 200 * heightFactor, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
             currentLevel = 0;
@@ -190,7 +190,7 @@ class Menu {
           this.cursorDetect() ? fill(255) : fill(200);
           rect(this.x, this.y, this.w, this.h);
           pop();
-          textSize(32);
+          textSize(32 * WINDOW_SCALE);
           textAlign(CENTER);
           fill(0);
           text("PLAY AGAIN", this.x + this.w / 2, this.y + this.h / 2);
@@ -198,7 +198,7 @@ class Menu {
       ));
 
       // MAIN MENU button (right)
-      this.buttons.push(new Button(200 * widthFactor + spacing, 250, 200 * widthFactor, 100 * heightFactor,
+      this.buttons.push(new Button(200 * widthFactor + spacing, 200 * heightFactor, 200 * widthFactor, 100 * heightFactor,
         function () {
           if (mouseIsPressed && this.cursorDetect() && !buttonPressed) {
             inMenu = true;
@@ -211,12 +211,12 @@ class Menu {
         function () {
           push();
           this.cursorDetect() ? fill(255) : fill(200);
-          rect(this.x, 250, this.w, this.h);
+          rect(this.x, this.y, this.w, this.h);
           pop();
-          textSize(32);
+          textSize(32 * WINDOW_SCALE);
           textAlign(CENTER);
           fill(0);
-          text("MAIN MENU", this.x + this.w / 2, 250 + this.h / 2);
+          text("MAIN MENU", this.x + this.w / 2, this.y + this.h / 2);
         }
       ));
 

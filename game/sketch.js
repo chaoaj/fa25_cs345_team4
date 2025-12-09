@@ -159,33 +159,33 @@ function loadLevel(n) {
   sunglassesDuck = [];
   tophatDuck = null;
   level = new Level();
-  let dukeHeight = dukeSprite.height * DOG_SCALE;
-  let dukeFrameW = dukeSprite.width / 4;
+  let dukeHeight = 49 * PLAYER_SCALE;
+  let dukeWidth = 49 * PLAYER_SCALE;
   // level 1
   if (n == 0) {
     player = new Player(level, 50 * PLAYER_SCALE, 50 * PLAYER_SCALE - 40 * PLAYER_SCALE, 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
     let duckHeight = 100 * DUCK_SCALE;
 
     level.addPlatform(new Platform(0 * PLAYER_SCALE, 50 * PLAYER_SCALE, 120 * PLAYER_SCALE, 30 * PLAYER_SCALE, platform1));
-    level.addPlatform(new Platform(80 * PLAYER_SCALE, 95 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2));
-    let duck1 = new SunglassDuck(80 * PLAYER_SCALE + 50, (95 * PLAYER_SCALE) - duckHeight + 50, 60 * DUCK_SCALE, duckHeight, 3, sunglassesDuckSprite)
+    level.addPlatform(new Platform(80 * PLAYER_SCALE, 95 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
+    let duck1 = new SunglassDuck(80 * PLAYER_SCALE + 50 * PLAYER_SCALE, (95 * PLAYER_SCALE) - duckHeight + 50 * PLAYER_SCALE, 60 * DUCK_SCALE, duckHeight, 3, sunglassesDuckSprite)
 
-    level.addPlatform(new Platform(160 * PLAYER_SCALE, 140 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
-    level.addPlatform(new Platform(240 * PLAYER_SCALE, 185 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2));
-    let duck2 = new SunglassDuck(240 * PLAYER_SCALE + 50, (185 * PLAYER_SCALE) - duckHeight + 50, 60 * DUCK_SCALE, duckHeight, 3, sunglassesDuckSprite);
+    level.addPlatform(new Platform(160 * PLAYER_SCALE, 140 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(240 * PLAYER_SCALE, 185 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
+    let duck2 = new SunglassDuck(240 * PLAYER_SCALE + 50 * PLAYER_SCALE, (185 * PLAYER_SCALE) - duckHeight + 50 * PLAYER_SCALE, 60 * DUCK_SCALE, duckHeight, 3, sunglassesDuckSprite);
 
-    level.addPlatform(new Platform(320 * PLAYER_SCALE, 230 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
-    level.addPlatform(new Platform(400 * PLAYER_SCALE, 275 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2));
+    level.addPlatform(new Platform(320 * PLAYER_SCALE, 230 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(400 * PLAYER_SCALE, 275 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
 
-    level.addPlatform(new Platform(480 * PLAYER_SCALE, 320 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
-    level.addPlatform(new Platform(560 * PLAYER_SCALE, 365 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2));
+    level.addPlatform(new Platform(480 * PLAYER_SCALE, 320 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(560 * PLAYER_SCALE, 365 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
 
-    level.addPlatform(new Platform(640 * PLAYER_SCALE, 410 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
-    level.addPlatform(new Platform(720 * PLAYER_SCALE, 455 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2));
+    level.addPlatform(new Platform(640 * PLAYER_SCALE, 410 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(720 * PLAYER_SCALE, 455 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
 
-    level.addGoal(new Goal(800 * PLAYER_SCALE, 415 * PLAYER_SCALE, 40, 40));
+    level.addGoal(new Goal(800 * PLAYER_SCALE, 415 * PLAYER_SCALE, 40 * PLAYER_SCALE, 40 * PLAYER_SCALE));
     sunglassesDuck = [duck1, duck2];
-    dukeDog = new DukeDog(level, -30 * PLAYER_SCALE, level.platforms[0].y - dukeHeight + 66, dukeFrameW * DOG_SCALE,  dukeHeight, 4, dukeSprite, WINDOW_SCALE);
+    dukeDog = new DukeDog(level, level.platforms[0].x -30 * PLAYER_SCALE, level.platforms[0].y - dukeHeight - 66 * PLAYER_SCALE , dukeWidth,  dukeHeight, 4, dukeSprite, WINDOW_SCALE);
   } else if (n == 1) {
     sunglassesDuck = [];
     // level 2
@@ -198,29 +198,29 @@ function loadLevel(n) {
     level.addPlatform(new Platform(240 * PLAYER_SCALE, starship_y, 120 * PLAYER_SCALE, 20, platform2));
     const starship_x = 280 * PLAYER_SCALE;
     const range = 30 * PLAYER_SCALE;
-    const smaller = 1.5;
-    level.addPlatform(new Starship(starship_x, starship_y - (60 * smaller), 60 * smaller, 60 * smaller, starshipSprite, starship_x - range, starship_x + range));
+    const smaller = PLAYER_SCALE;
+    level.addPlatform(new Starship(starship_x, starship_y - 60 * smaller, 60 * smaller, 60 * smaller, starshipSprite, starship_x - range, starship_x + range));
     const tophatheight = 108 * smaller;
     const tophatwidth = 60 * smaller;
-    level.addPlatform(new Platform(320 * PLAYER_SCALE, 230 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
+    level.addPlatform(new Platform(320 * PLAYER_SCALE, 230 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
     tophatDuck = new TophatDuck(322 * PLAYER_SCALE + 30, 285 * PLAYER_SCALE - tophatheight, tophatwidth, tophatheight, 2, topHatDuckSprite);
-    level.addPlatform(new Platform(400 * PLAYER_SCALE, 275 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform2))
-    level.addPlatform(new Platform(480 * PLAYER_SCALE, 320 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20, platform1));
-    level.addGoal(new Goal(560 * PLAYER_SCALE, 280 * PLAYER_SCALE, 40, 40));
-    dukeDog = new DukeDog(level, player.x - 150, 50 * PLAYER_SCALE - dukeHeight, dukeFrameW * DOG_SCALE,  dukeHeight, 4, dukeSprite, WINDOW_SCALE);
+    level.addPlatform(new Platform(400 * PLAYER_SCALE, 275 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2))
+    level.addPlatform(new Platform(480 * PLAYER_SCALE, 320 * PLAYER_SCALE, 120 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addGoal(new Goal(560 * PLAYER_SCALE, 280 * PLAYER_SCALE, 40 * PLAYER_SCALE, 40 * PLAYER_SCALE));
+    dukeDog = new DukeDog(level, level.platforms[0].x -30 * PLAYER_SCALE, level.platforms[0].y - dukeHeight - 66 * PLAYER_SCALE , dukeWidth,  dukeHeight, 4, dukeSprite, WINDOW_SCALE);
   } else if (n == 2) {
     // level 3
     level = new Level();
-    player = new Player(level, 50 * PLAYER_SCALE, (50 * PLAYER_SCALE) - (40 * PLAYER_SCALE), 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
-    level.addPlatform(new Platform(0, 50 * PLAYER_SCALE, 150, 30, platform1));
-    level.addPlatform(new Platform(100, 50 * PLAYER_SCALE + 1 * 50 * PLAYER_SCALE, 100, 20, platform2));
-    level.addPlatform(new Platform(250, 50 * PLAYER_SCALE + 2 * 50 * PLAYER_SCALE, 100, 20, platform1));
-    level.addPlatform(new Platform(400, 50 * PLAYER_SCALE + 3 * 50 * PLAYER_SCALE, 100, 20, platform2));
-    level.addPlatform(new Platform(550, 50 * PLAYER_SCALE + 4 * 50 * PLAYER_SCALE, 100, 20, platform1));
-    level.addPlatform(new Platform(700, 50 * PLAYER_SCALE + 5 * 50 * PLAYER_SCALE, 100, 20, platform2));
-    level.addPlatform(new Platform(850, 50 * PLAYER_SCALE + 6 * 50 * PLAYER_SCALE, 100, 20, platform1));
-    level.addGoal(new Goal(880, (50 * PLAYER_SCALE + 6 * 50 * PLAYER_SCALE) - 40, 40, 40));
-    dukeDog = new DukeDog(level, -30 * PLAYER_SCALE, 50 * PLAYER_SCALE - dukeHeight + 66, dukeFrameW * DOG_SCALE,  dukeHeight, 4, dukeSprite, WINDOW_SCALE);
+    player = new Player(level, 50 * PLAYER_SCALE, 10 * PLAYER_SCALE, 30 * PLAYER_SCALE, 40 * PLAYER_SCALE, 1, 2, 10, -16, 20);
+    level.addPlatform(new Platform(0, 50 * PLAYER_SCALE, 150 * PLAYER_SCALE, 30 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(100 * PLAYER_SCALE, 50 * PLAYER_SCALE + 1 * 50 * PLAYER_SCALE, 100 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
+    level.addPlatform(new Platform(250 * PLAYER_SCALE, 50 * PLAYER_SCALE + 2 * 50 * PLAYER_SCALE, 100 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(400 * PLAYER_SCALE, 50 * PLAYER_SCALE + 3 * 50 * PLAYER_SCALE, 100 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
+    level.addPlatform(new Platform(550 * PLAYER_SCALE, 50 * PLAYER_SCALE + 4 * 50 * PLAYER_SCALE, 100 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addPlatform(new Platform(700 * PLAYER_SCALE, 50 * PLAYER_SCALE + 5 * 50 * PLAYER_SCALE, 100 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform2));
+    level.addPlatform(new Platform(850 * PLAYER_SCALE, 50 * PLAYER_SCALE + 6 * 50 * PLAYER_SCALE, 100 * PLAYER_SCALE, 20 * PLAYER_SCALE, platform1));
+    level.addGoal(new Goal(880 * PLAYER_SCALE, (50 * PLAYER_SCALE + 6 * 50 * PLAYER_SCALE) - 40 * PLAYER_SCALE, 40 * PLAYER_SCALE, 40 * PLAYER_SCALE));
+    dukeDog = new DukeDog(level, level.platforms[0].x -30 * PLAYER_SCALE, level.platforms[0].y - dukeHeight - 66 * PLAYER_SCALE , dukeWidth,  dukeHeight, 4, dukeSprite, WINDOW_SCALE);
   } else {
     // game end
     clear();
@@ -228,7 +228,7 @@ function loadLevel(n) {
     level = new Level();
     background(255);
     textAlign(CENTER, CENTER);
-    textSize(32);
+    textSize(32 * WINDOW_SCALE);
     fill(0);
     text(" You Finished All Levels! ", width / 2, height / 2);
     noLoop();

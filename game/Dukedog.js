@@ -1,16 +1,14 @@
 class DukeDog {
-  constructor(level, x, y, frameWidth, frameHeight, numFrames, spriteSheet, windowScale) {
+  constructor(level, x, y, width, height, numFrames, spriteSheet, windowScale) {
     this.level = level;
     this.windowScale = windowScale;
     this.x = x;
     this.y = y;
-    this.frameWidth = frameWidth;
-    this.frameHeight = frameHeight;
     this.numFrames = numFrames;
     this.spriteSheet = spriteSheet;
 
-    this.w = frameWidth;
-    this.h = frameHeight - 65;
+    this.w = width;
+    this.h = height;
 
     this.currentFrame = 0;
     this.frameCounter = 0;
@@ -63,9 +61,9 @@ class DukeDog {
   // collision check
   touch(p) {
     return !(
-      this.x + this.frameWidth < p.x ||
+      this.x + this.w < p.x ||
       this.x > p.x + p.w ||
-      this.y + this.frameHeight < p.y ||
+      this.y + this.h < p.y ||
       this.y > p.y + p.h
     );
   }
@@ -77,25 +75,25 @@ class DukeDog {
         this.spriteSheet,
         this.x,
         this.y,
-        this.frameWidth,
-        this.frameHeight,
-        this.currentFrame * (this.frameWidth / DOG_SCALE),
+        this.w,
+        this.h,
+        this.currentFrame * 49,
         0,
-        this.frameWidth / DOG_SCALE,
-        this.frameHeight / DOG_SCALE
+        49,
+        49
       );
     } else {
       scale(-1, 1);
       image(
         this.spriteSheet,
-        -this.x - this.frameWidth/2,
+        -this.x - this.w/2,
         this.y,
-        this.frameWidth,
-        this.frameHeight,
-        this.currentFrame * (this.frameWidth / DOG_SCALE),
+        this.w,
+        this.h,
+        this.currentFrame * 49,
         0,
-        this.frameWidth / DOG_SCALE,
-        this.frameHeight / DOG_SCALE
+        49,
+        49
       );
     }
     pop();
