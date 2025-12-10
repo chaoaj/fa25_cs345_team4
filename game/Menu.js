@@ -88,7 +88,7 @@ class Menu {
         function () {
           push();
           if(unlockedLevels.has(0)) {
-            this.cursorDetect() ? fill(255,250,180) : fill(255,250,180);
+            this.cursorDetect() ? fill(255,255,255) : fill(255,250,180);
           } else {
             fill(0);
           }
@@ -114,7 +114,7 @@ class Menu {
         function () {
           push();
           if(unlockedLevels.has(1)) {
-            this.cursorDetect() ? fill(255,250,180) : fill(255,250,180);
+            this.cursorDetect() ? fill(255,255,255) : fill(255,250,180);
           } else {
             fill(0);
           }
@@ -140,7 +140,7 @@ class Menu {
         function () {
           push();
           if(unlockedLevels.has(2)) {
-            this.cursorDetect() ? fill(255,250,180) : fill(255,250,180);
+            this.cursorDetect() ? fill(255,255,255) : fill(255,250,180);
           } else {
             fill(0);
           }
